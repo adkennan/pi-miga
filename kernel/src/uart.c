@@ -8,6 +8,7 @@
 #include "mmio.h"
 #include "uart.h"
 #include "irq.h"
+#include "gpu.h"
 
 enum {
     // The GPIO registers base address.
@@ -119,6 +120,8 @@ void uart_putc(uint8_t byte) {
 	}
     }
     mmio_write(UART0_DR, byte);
+
+	PutChar((uint32)byte);
 }
 
 /*

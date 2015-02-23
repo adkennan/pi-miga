@@ -7,6 +7,7 @@
 #include "uart.h"
 #include "signal.h"
 #include "msgport.h"
+#include "gpu.h"
 
 #define EXEC_IFACE_LOC 0x7FFC
 
@@ -130,6 +131,9 @@ void Schedule() {
 }
 
 void InitKernel(uint8* heapBase) {
+
+	SetScreenMode(800, 600);
+	Fill(0, 0, 800, 600, 0x1f, 0x50, 0xa7);
 
 	uart_puts("Heap Base = ");
 	uart_putn((uint32)heapBase);

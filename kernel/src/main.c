@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
 
 	uart_init();
 
-	uart_puts("\nInit\n\n");
+	//uart_puts("\nInit\n\n");
 
 	InitKernel((uint8*)&_end);
 
