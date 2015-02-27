@@ -1,7 +1,6 @@
 
 #include "signal.h"
 #include "kernel.h"
-#include "uart.h"
 
 extern void _Idle(void);
 

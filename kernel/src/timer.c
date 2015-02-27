@@ -2,7 +2,6 @@
 #include "type.h"
 #include "list.h"
 #include "timer.h"
-#include "uart.h"
 #include "kernel.h"
 #include "irq.h"
 

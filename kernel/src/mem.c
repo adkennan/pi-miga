@@ -4,6 +4,7 @@
 #include "kernel.h"
 #include "type.h"
 #include "list.h"
+#include "exec.h"
 
 #define MAGIC 0xDEADBEEF
 
@@ -69,11 +70,14 @@ MemNode_t* AllocLargeBlock(size_t size) {
 
 	Insert(&(k->mem), (Node_t*)node, (Node_t*)curr);
 
+	if( k->currentTask != NULL ) {
+		k->currentTask->memUsage += HEADER_SIZE + size + ALIGN(4,size);
+	}
+
 	return node;
 }
 
 void* AllocSmallBlock(size_t size) {
-
 
 	Kernel_t* k = GetKernel();
 
@@ -102,7 +106,6 @@ void* AllocSmallBlock(size_t size) {
 		node = (SmallMemNode_t*)(node->n.n.next);
 	}
 
-
 	if( node == NULL ) {
 		node = (SmallMemNode_t*)AllocLargeBlock((sizeof(SmallMemNode_t) - sizeof(MemNode_t)) 
 							+ blockSize * SMALL_BLOCK_ENTRIES);
@@ -125,6 +128,10 @@ void* AllocSmallBlock(size_t size) {
 		node->freeBlocks |= pos;
 		return TO_SMALL_MEM(node, slot);
 	}
+
+	if( k->currentTask != NULL ) {
+		k->currentTask->memUsage += blockSize;
+	}
 }
 
 void* AllocMem(size_t size) {
@@ -140,6 +147,9 @@ void FreeMem(void* mem) {
 	MemNode_t* node = FROM_MEM(mem);
 	if( node->magic == MAGIC && node->type == MT_LARGE ) {
 		RemoveNode(&(k->mem), (Node_t*)node);
+		if( k->currentTask != NULL ) {
+			k->currentTask->memUsage -= HEADER_SIZE + node->size + ALIGN(4, node->size);
+		}
 	} else {
 		uint32* m = (uint32*)ALIGN(4,(uint8*)mem);
 		while( *m != MAGIC ) {
@@ -151,6 +161,9 @@ void FreeMem(void* mem) {
 		SmallMemNode_t* snode = (SmallMemNode_t*)(((uint8*)m) - sizeof(Node_t));
 		uint64 slot = ((((uint64)mem) - ((((uint64)snode)) + sizeof(SmallMemNode_t)))) / snode->blockSize;
 		snode->freeBlocks &= ~(1 << slot);
+		if( k->currentTask != NULL ) {
+			k->currentTask->memUsage -= snode->blockSize;
+		}
 	}
 }
 

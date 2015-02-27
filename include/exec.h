@@ -12,7 +12,8 @@ typedef enum {
 	NT_TASK,
 	NT_TIMER,
 	NT_IRQ,
-	NT_LIBRARY
+	NT_LIBRARY,
+	NT_DEVICE
 } NodeType_t;
 
 typedef enum {
@@ -62,29 +63,24 @@ typedef void (*TaskStart_t)(void);
 
 typedef uint32* StackPtr_t;
 
-typedef struct {
+typedef struct Task_t Task_t;
+
+struct Task_t {
 	Node_t n;
 	uint32 id;
+	Task_t* parent;
 	List_t msgPorts;
+	uint64 totalTime;
+	uint64 schedTime;
+	uint32 sliceTime;
+	uint32 memUsage;
 	TaskState_t state;
 	TaskStart_t start;
 	StackPtr_t stackPtr;
 	uint32 sigAlloc;
 	uint32 sigWait;
 	uint32 sigReceived; 
-} Task_t;
-
-typedef struct {
-	uint8* heapBase;
-	List_t mem;
-	List_t timers;
-	List_t msgPorts;
-	List_t tasks;
-	List_t libraries;
-	Timer_t schedTimer;
-	Task_t* currentTask;
-} Kernel_t;
-
+};
 
 typedef enum {
 	SIG_ANY = -1,
@@ -106,6 +102,36 @@ typedef struct {
 	uint32 length;
 } Message_t;
 
+typedef struct {
+	Node_t n;
+	Task_t* task;
+} Device_t;
+
+typedef enum {
+	CMD_OPEN,
+	CMD_CLOSE,
+	CMD_READ,
+	CMD_WRITE,
+	CMD_ABORT,
+	CMD_CUSTOM
+} IOCommand_t;
+
+typedef struct {
+	Message_t m;
+	Device_t* device;
+	void* unit;
+	uint32 command;
+	uint32 flags;
+	uint32 error;
+} IORequest_t;
+
+typedef struct {
+	IORequest_t r;
+	uint8* data;
+	uint32 length;
+	uint32 offset;
+	uint32 actual;	
+} IOStdReq_t;
 
 typedef struct {
 	void (*Init)();
@@ -176,8 +202,23 @@ typedef struct {
 	Task_t* (*FindTask)(const char*);
 	void (*StartTask)(Task_t*);
 
+	/*
+	 * Devices
+	 */
+
+	Device_t* (*CreateDevice)(const char* name, uint32 stackSize, TaskStart_t start);
+	IORequest_t* (*CreateIORequest)(MessagePort_t* port, uint32 size);
+	void (*DeleteIORequest)(IORequest_t* request);
+	uint32 (*OpenDevice)(const char *name, uint32 unit, IORequest_t* request);
+	uint32 (*CloseDevice)(IORequest_t* request);
+	uint32 (*DoIO)(IORequest_t* request);
+	void (*SendIO)(IORequest_t* request);
+	bool (*CheckIO)(IORequest_t* request);
+	uint32 (*WaitIO)(IORequest_t* request);
+	uint32 (*AbortIO)(IORequest_t* request);
+
 } IExec_t;
 
-extern IExec_t** IExec;
+extern IExec_t* IExec;
 
 #endif // __EXEC_H__

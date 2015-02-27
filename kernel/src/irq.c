@@ -1,7 +1,6 @@
 
 #include "list.h"
 #include "irq.h"
-#include "uart.h"
 
 extern void _EnableIrq();
 extern void _DisableIrq();

@@ -8,61 +8,53 @@
 
 extern uint32 _end;
 
-
 void Pinger() {
 
-	uart_puts("Starting Pinger\n");
+	MessagePort_t* port = IExec->CreatePort(NULL);
+	IORequest_t* req = IExec->CreateIORequest(port, sizeof(IOStdReq_t));
 
-		Sleep(1000000);
+	if( IExec->OpenDevice("console.device", 0, req) ) {
+		uart_puts("Error: ");
+		uart_putn(req->error);
+		uart_putc('\n');
+	}
 
-	Task_t* o = FindTask("Ponger");
+	req->command = CMD_WRITE;
 
-	MessagePort_t* op = (MessagePort_t*)o->msgPorts.head;
-	Message_t* m = AllocMessage(6);
-	SetUserData(m, (void*)"Ping!", 6);
-	
-	MessagePort_t* mp = (MessagePort_t*)GetKernel()->currentTask->msgPorts.head;
+	IOStdReq_t* stdReq = (IOStdReq_t*)req;
+	stdReq->data = (uint8*)" Ping!\n";
+	stdReq->length = 7;
+
 	while(TRUE) {
-		
-		SendMessage(op, m);
+
+		IExec->DoIO(req);
 
 		Sleep(1000000);
-
-		Message_t* mm = WaitMessage(mp);
-		if( mm != NULL ) {
-			const char* mc = (const char *)GetUserData(mm);
-			uart_puts("Pinger: ");
-			uart_puts(mc);
-			uart_putc('\n');
-		}
 	}
 }
 
 void Ponger() {
 
-	uart_puts("Starting Ponger\n");
+	MessagePort_t* port = IExec->CreatePort(NULL);
+	IORequest_t* req = IExec->CreateIORequest(port, sizeof(IOStdReq_t));
 
-		Sleep(1000000);
+	if( IExec->OpenDevice("console.device", 0, req) ) {
+		uart_puts("Error: ");
+		uart_putn(req->error);
+		uart_putc('\n');
+	}
 
-	Task_t* o = FindTask("Pinger");
-	MessagePort_t* op = (MessagePort_t*)o->msgPorts.head;
-	Message_t* m = AllocMessage(6);
-	SetUserData(m, (void*)"Pong!", 6);
-	
-	MessagePort_t* mp = (MessagePort_t*)GetKernel()->currentTask->msgPorts.head;
+	req->command = CMD_WRITE;
+
+	IOStdReq_t* stdReq = (IOStdReq_t*)req;
+	stdReq->data = (uint8*)" Pong!\n";
+	stdReq->length = 7;
+
 	while(TRUE) {
-		
+
 		Sleep(1000000);
 		
-		SendMessage(op, m);
-
-		Message_t* mm = WaitMessage(mp);
-		if( mm != NULL ) {
-			const char* mc = (const char *)GetUserData(mm);
-			uart_puts("Ponger: ");
-			uart_puts(mc);
-			uart_putc('\n');
-		}
+		IExec->DoIO(req);
 	}
 }
 
@@ -70,18 +62,14 @@ int main(int argc, char* argv[]) {
 
 	uart_init();
 
-	//uart_puts("\nInit\n\n");
-
 	InitKernel((uint8*)&_end);
-
-	uart_puts("\nReady\n");
 
 	EnableInterrupts();
 	
-	Task_t* t = CreateTask("Pinger", 0, 1024, Pinger);
+	Task_t* t = CreateTask("Pinger", 10, 1024, Pinger);
 	StartTask(t);
-	
-	t = CreateTask("Ponger", 0, 1024, Ponger);
+
+	t = CreateTask("Ponger", 10, 1024, Ponger);
 	StartTask(t);
 
 	while(1) {

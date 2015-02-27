@@ -3,7 +3,6 @@
 #include "mem.h"
 #include "kernel.h"
 #include "list.h"
-#include "uart.h"
 #include "signal.h"
 
 MessagePort_t* CreatePort(const char *name) {
@@ -108,6 +107,7 @@ void SendMessage(MessagePort_t* port, Message_t* message) {
 }
 
 void ReplyMessage(Message_t* message) {
-	(void)message;
+
+	SendMessage(message->replyPort, message);
 }
 

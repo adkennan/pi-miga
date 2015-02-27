@@ -4,10 +4,10 @@
 #include "timer.h"
 #include "irq.h"
 #include "mem.h"
-#include "uart.h"
 #include "signal.h"
 #include "msgport.h"
 #include "gpu.h"
+#include "console.h"
 
 #define EXEC_IFACE_LOC 0x7FFC
 
@@ -24,16 +24,24 @@ static Kernel_t _kernel;
 
 Task_t* CreateTask(const char* name, int8 priority, uint32 stackSize, TaskStart_t start)
 {
+	uint32 memSize = stackSize + sizeof(Task_t);
+
 	void* mem = AllocMem(stackSize + sizeof(Task_t)); 
+
+	if( _kernel.currentTask != NULL ) {
+		_kernel.currentTask->memUsage -= memSize;
+	}
 
 	Task_t* task = (Task_t*)mem;
 	InitNode((Node_t*)&task->n, priority, name);
-	task->id = 0;
+	task->id = _kernel.nextTaskId++;
+	task->parent = _kernel.currentTask;
 	task->state = TS_READY;
 	task->start = start;
 	task->sigAlloc = 1;
 	task->sigWait = 1;
 	task->sigReceived = 0;
+	task->memUsage = memSize;
 
 	InitList(&task->msgPorts, NT_MSGPORT, LF_NONE);
 
@@ -72,7 +80,10 @@ void StartTask(Task_t* task) {
 }
 
 Task_t* FindTask(const char* name) {
-	
+
+	if( name == NULL ) {
+		return _kernel.currentTask;
+	}	
 	return (Task_t*)FindNode(&(_kernel.tasks), name);
 }
 
@@ -105,7 +116,9 @@ void Schedule() {
 	Task_t* t = (Task_t*)_kernel.tasks.head;
 	while( t != NULL ) {
 
-		if( t->state == TS_READY ) {
+		if( t->state == TS_READY  ) {
+
+			uint64 ticks = GetTicks();
 
 			Task_t *currTask = _kernel.currentTask;			
 			if( currTask != NULL ) {
@@ -115,9 +128,11 @@ void Schedule() {
 
 				if( currTask->state == TS_RUNNING ) {
 					currTask->state = TS_READY;
+					currTask->totalTime += ticks - currTask->schedTime;
 				}
 			}
 
+			t->schedTime = ticks;
 			t->state = TS_RUNNING;
 	
 			_kernel.currentTask = t;
@@ -135,16 +150,13 @@ void InitKernel(uint8* heapBase) {
 	SetScreenMode(800, 600);
 	Fill(0, 0, 800, 600, 0x1f, 0x50, 0xa7);
 
-	uart_puts("Heap Base = ");
-	uart_putn((uint32)heapBase);
-	uart_putc('\n');
-
 	_kernel.heapBase = heapBase;
 	InitList(&(_kernel.mem), NT_MEMORY, LF_NONE);
 	InitList(&(_kernel.msgPorts), NT_MSGPORT, LF_NONE);
 	InitList(&(_kernel.tasks), NT_TASK, LF_SORTED);
 	InitList(&(_kernel.timers), NT_TIMER, LF_NONE);
 	InitList(&(_kernel.libraries), NT_LIBRARY, LF_NONE);
+	InitList(&(_kernel.devices), NT_DEVICE, LF_NONE);
 
 	InitInterrupts();
 
@@ -161,6 +173,8 @@ void InitKernel(uint8* heapBase) {
 
 	Task_t *idleTask = CreateTask("Idle", 127, 1024, Idler);
 	StartTask(idleTask);
+
+	StartConsole();
 
 	AddTimer(&(_kernel.schedTimer));
 }

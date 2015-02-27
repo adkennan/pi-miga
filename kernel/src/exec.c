@@ -6,12 +6,13 @@
 #include "msgport.h"
 #include "signal.h"
 #include "type.h"
+#include "device.h"
 
-IExec_t** IExec = (IExec_t**)0x4000;
+IExec_t* IExec = (IExec_t*)0x4000;
 
 void InitExecLibrary(void) {
 
-	IExec_t* iface = (IExec_t*)AllocMem(sizeof(IExec_t));
+	IExec_t* iface = IExec;
 
 	Interface_t* defIface = (Interface_t*)iface;
 	defIface->Open = NULL;
@@ -51,6 +52,15 @@ void InitExecLibrary(void) {
 	iface->FindTask = FindTask;
 	iface->StartTask = StartTask;
 
-	*IExec = iface;
+	iface->CreateDevice = CreateDevice;
+	iface->CreateIORequest = CreateIORequest;
+	iface->DeleteIORequest = DeleteIORequest;
+	iface->OpenDevice = OpenDevice;
+	iface->CloseDevice = CloseDevice;
+	iface->DoIO = DoIO;
+	iface->SendIO = SendIO;
+	iface->CheckIO = CheckIO;
+	iface->WaitIO = WaitIO;
+	iface->AbortIO = AbortIO;
 }
 

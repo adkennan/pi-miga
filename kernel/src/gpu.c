@@ -101,7 +101,7 @@ void GetCharPos(uint32 c, uint32* x, uint32* y) {
 	*y = 0;
 	while( *x >= BMP_width - CHAR_WIDTH ) {
 		*x -= (BMP_width - CHAR_WIDTH);
-		*y += CHAR_HEIGHT;
+		*y += CHAR_HEIGHT + 1;
 	}	
 }
 

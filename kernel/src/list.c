@@ -2,7 +2,6 @@
 #include "mem.h"
 #include "list.h"
 #include "string.h"
-#include "uart.h"
 
 List_t* NewList(NodeType_t type, ListFlag_t flags) {
 
