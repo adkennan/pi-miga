@@ -30,6 +30,8 @@ reset:
 	ldr		r0,		=exec_location
 	ldr		sp,	 	[r0]
 
+	mov		r10,	r2
+
 	// Copy exception handler table to 0x0000
 	mov		r0, 	#0x8000
 	mov 	r1, 	#0x0000
@@ -53,15 +55,13 @@ l1:
 	cmp 	r4,		r9
 	blo		l1
 
+	mov		r0,		r10
 	ldr		r3,		=main
 	blx		r3
 
 halt:
-	ldr		r0,		=halt_msg
-	bl		uart_puts
-really_halt:
 	wfe
-	b		really_halt
+	b		halt
 
 
 .globl Get32
@@ -73,9 +73,6 @@ Get32:
 Put32:
 	str		r1,		[r0]
 	bx		lr
-
-.section .data
-halt_msg:	.ascii "Halting\n\0"
 
 exec_location: .int 0x7ff8
 

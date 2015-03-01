@@ -125,49 +125,6 @@ void uart_putc(uint8_t byte) {
 }
 
 /*
- * print a string to the UART one character at a time
- * const char *str: 0-terminated string
- */
-void uart_puts(const char *str) {
-
-    while(*str) {
-        uart_putc(*str++);
-    }
-
-}
-
-void uart_putn(uint32 n) {
-	DisableInterrupts();
-	
-	uart_putc('0');
-	uart_putc('x');
-
-	for( uint32 d = 8; d > 0; d-- ) {
-		uint8 v = (uint8)((n >> ((d - 1) * 4) ) & 0xF);
-		switch( v ) {
-			case 0:
-			case 1:
-			case 2:
-			case 3:
-			case 4:
-			case 5:
-			case 6:
-			case 7:
-			case 8:
-			case 9:
-				uart_putc('0' + v);
-				break;
-
-			default:
-				uart_putc('A' + (v - 10));
-				break;
-		}
-	}
-	
-	EnableInterrupts();
-}
-
-/*
  * Receive a byte via UART0.
  *
  * Returns:

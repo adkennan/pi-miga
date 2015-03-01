@@ -1,10 +1,13 @@
 
 #include "kernel.h"
 #include "mem.h"
-#include "uart.h"
+#include "debug.h"
 #include "timer.h"
 #include "irq.h"
 #include "msgport.h"
+#include "atag.h"
+
+#include "uart.h"
 
 extern uint32 _end;
 
@@ -14,9 +17,7 @@ void Pinger() {
 	IORequest_t* req = IExec->CreateIORequest(port, sizeof(IOStdReq_t));
 
 	if( IExec->OpenDevice("console.device", 0, req) ) {
-		uart_puts("Error: ");
-		uart_putn(req->error);
-		uart_putc('\n');
+		DebugPrintf("Error: %x\n", req->error);
 	}
 
 	req->command = CMD_WRITE;
@@ -39,9 +40,7 @@ void Ponger() {
 	IORequest_t* req = IExec->CreateIORequest(port, sizeof(IOStdReq_t));
 
 	if( IExec->OpenDevice("console.device", 0, req) ) {
-		uart_puts("Error: ");
-		uart_putn(req->error);
-		uart_putc('\n');
+		DebugPrintf("Error: %x\n", req->error);
 	}
 
 	req->command = CMD_WRITE;
@@ -58,9 +57,11 @@ void Ponger() {
 	}
 }
 
-int main(int argc, char* argv[]) {
+int main(struct Atag* atags) {
 
 	uart_init();
+
+	DebugAtags(atags);
 
 	InitKernel((uint8*)&_end);
 
