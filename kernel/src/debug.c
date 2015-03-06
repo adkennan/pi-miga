@@ -8,7 +8,10 @@ void DebugPrintf(const char* fmt, ...) {
 
 	va_list va;
 	va_start(va, fmt);
+}
 
+void DebugPrintArg(const char* fmt, va_list va) 
+{
 	char ch;
 	while(  (ch = *(fmt++)) ) {
 		if( ch != '%' ) {

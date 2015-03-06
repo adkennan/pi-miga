@@ -47,8 +47,7 @@ static volatile CounterReg_t* CounterReg = (CounterReg_t*)0x20003000;
 static volatile TimerReg_t* TimerReg = (TimerReg_t*)0x2000B400;
 static IrqHandler_t TimerIrqHandler;
 
-bool TimerIdentifier(void) {
-
+bool TimerIdentifier(void* data) {
 
 	if( TimerReg->MaskedIrq == 1 ) {
 			
@@ -59,7 +58,7 @@ bool TimerIdentifier(void) {
 	return FALSE;
 }
 
-void TimerHandler(void) {
+void TimerHandler(void* data) {
 
 	uint64 counter = CounterReg->Counter;
 
@@ -99,6 +98,7 @@ void InitTimer() {
 
 	TimerIrqHandler.handler = &TimerHandler;
 	TimerIrqHandler.identifier = &TimerIdentifier;
+	TimerIrqHandler.num = IRQ_TIMER;
 	RegisterIrqHandler(&TimerIrqHandler);
 }
 

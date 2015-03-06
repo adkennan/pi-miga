@@ -1,6 +1,8 @@
 
 #include "list.h"
 #include "irq.h"
+#include "kernel.h"
+#include "debug.h"
 
 extern void _EnableIrq();
 extern void _DisableIrq();
@@ -20,16 +22,17 @@ typedef struct {
 
 static volatile IrqReg_t* IrqReg = (IrqReg_t*)0x2000B200;
 
-static volatile List_t HandlerList;
-
 #define IRQ_PENDING_1 0x40000000
 #define	IRQ_PENDING_2 0x80000000
 
 void IdentifyIrq(void) {
-	
-	IrqHandler_t* h = (IrqHandler_t*)HandlerList.head;
+
+	Kernel_t* k = GetKernel();
+
+	IrqHandler_t* h = (IrqHandler_t*)k->irqHandlers.head;
 	while( h != NULL ) {
-		if( h->identifier() == TRUE ) {
+		if( (IrqReg->IrqBasicPending & (1 << (h->num - 1))) 
+			&& (h->identifier == NULL || h->identifier(h->data) == TRUE) ) {
 			h->flags = IRQ_FLAG_PENDING;
 		}
 		h = (IrqHandler_t*)h->n.next;
@@ -37,15 +40,16 @@ void IdentifyIrq(void) {
 }
 
 void HandleIrq(void) {
-	
 
-	IrqHandler_t* h = (IrqHandler_t*)HandlerList.head;
+	Kernel_t* k = GetKernel();
+
+	IrqHandler_t* h = (IrqHandler_t*)k->irqHandlers.head;
 	while( h != NULL ) {
 		
 		if( (h->flags & IRQ_FLAG_PENDING) == IRQ_FLAG_PENDING ) {
 
 			h->flags = 0;
-			h->handler();
+			h->handler(h->data);
 		}
 
 		h = (IrqHandler_t*)h->n.next;
@@ -53,13 +57,31 @@ void HandleIrq(void) {
 }
 
 void InitInterrupts() {
-	InitList((List_t*)&HandlerList, NT_IRQ, LF_NONE);
+
+	Kernel_t* k = GetKernel();
+
+	InitList(&(k->irqHandlers), NT_IRQ, LF_NONE);
+}
+
+void UpdateBasicIrq() {
+
+	uint32 n = 0;
+
+	Kernel_t* k = GetKernel();
+
+	IrqHandler_t* h = (IrqHandler_t*)k->irqHandlers.head;
+	while( h != NULL ) {
+		n |= 1 << (h->num - 1);
+		
+		h = (IrqHandler_t*)h->n.next;
+	}
+
+	IrqReg->EnableBasicIrq = n;
 }
 
 void EnableInterrupts() {
 	
-	IrqReg->EnableBasicIrq = 1; //IRQ_TIMER;
-	
+	UpdateBasicIrq();
 	_EnableIrq();
 }
 
@@ -69,8 +91,23 @@ void DisableInterrupts() {
 
 void RegisterIrqHandler(IrqHandler_t* handler) {
 
+	DebugPrintf("Registering handler for %x\n", handler->num);
+
 	InitNode(&handler->n, 0, NULL);	
 	handler->flags = 0;
-	Insert((List_t*)&HandlerList, (Node_t*)handler, NULL);
+
+	Kernel_t* k = GetKernel();
+	Insert(&(k->irqHandlers), (Node_t*)handler, NULL);
+
+	UpdateBasicIrq();
 }
+
+void DeregisterIrqHandler(IrqHandler_t* handler) {
+	
+	Kernel_t* k = GetKernel();
+	RemoveNode(&(k->irqHandlers), (Node_t*)handler);
+
+	UpdateBasicIrq();
+}
+
 

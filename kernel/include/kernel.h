@@ -7,6 +7,7 @@
 typedef struct {
 	uint8* heapBase;
 	List_t mem;
+	List_t irqHandlers;
 	List_t timers;
 	List_t msgPorts;
 	List_t tasks;

@@ -33,8 +33,8 @@ reset:
 	mov		r10,	r2
 
 	// Copy exception handler table to 0x0000
-	mov		r0, 	#0x8000
-	mov 	r1, 	#0x0000
+	ldr		r0, 	=Start
+	mov 	r1, 	#0
 
 	ldmia 	r0!, 	{r2-r9}
 	stmia 	r1!, 	{r2-r9}

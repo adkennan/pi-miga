@@ -16,8 +16,8 @@ DEPS		+= $(patsubst %.c,%.d,$(SOURCES_C))
 
 # Build flags
 DEPENDFLAGS := -MD -MP
-INCLUDES    := -I include -I../include
-BASEFLAGS   := -O2 -fpic -pedantic -pedantic-errors -nostdlib
+INCLUDES    := -I include -I../include -Isrc/uspi/include
+BASEFLAGS   := -O2 -pedantic -pedantic-errors -nostdlib
 BASEFLAGS   += -nostartfiles -ffreestanding -nodefaultlibs
 BASEFLAGS   += -fno-builtin -fomit-frame-pointer -mcpu=arm1176jzf-s
 WARNFLAGS   := -Wall 
@@ -42,8 +42,8 @@ all: kernel.img
  
 include $(wildcard src/*.d)
  
-kernel.elf: $(OBJS) link-arm-eabi.ld
-	$(ARMGNU)-gcc $(OBJS) -Tlink-arm-eabi.ld -o $@
+kernel.elf: $(OBJS) libuspi.a link-arm-eabi.ld
+	$(ARMGNU)-gcc $(OBJS) libuspi.a -Tlink-arm-eabi.ld -o $@
  
 kernel.img: kernel.elf
 	$(ARMGNU)-objcopy kernel.elf -O binary kernel.img
@@ -54,6 +54,9 @@ clean:
 dist-clean: clean
 	$(RM) -f *.d
  
+libuspi.a: 
+	cd src/uspi/lib ; make ; cp libuspi.a ../../..
+
 # C.
 %.o: %.c Makefile
 	$(ARMGNU)-gcc $(CFLAGS) -c $< -o $@

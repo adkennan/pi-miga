@@ -8,6 +8,7 @@
 #include "msgport.h"
 #include "gpu.h"
 #include "console.h"
+#include "usb.h"
 
 #define EXEC_IFACE_LOC 0x7FFC
 
@@ -177,5 +178,7 @@ void InitKernel(uint8* heapBase) {
 	StartConsole();
 
 	AddTimer(&(_kernel.schedTimer));
+
+	InitUsb();
 }
 
