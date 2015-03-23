@@ -8,29 +8,33 @@
 
 void DebugAtags(struct Atag* atags) {
 
+	DebugPrintf("\nATAGS\n\n");
+
 	while(atags != NULL) {
 		switch( atags->h.tag ) {
 			case ATAG_CORE:
-				DebugPrintf("CORE: \n");
+				DebugPrintf("  CORE: \n");
 				break;
 
 			case ATAG_MEM:
-			 	DebugPrintf("MEM: start: %x, size: %x\n", atags->u.mem.start, atags->u.mem.size);
+			 	DebugPrintf("  MEM: start: %x, size: %x\n", atags->u.mem.start, atags->u.mem.size);
 				break;
 
 			case ATAG_SERIAL:
-				DebugPrintf("SERIAL: l: %x, h: %x\n", atags->u.serialNo.low, atags->u.serialNo.high);
+				DebugPrintf("  SERIAL: l: %x, h: %x\n", atags->u.serialNo.low, atags->u.serialNo.high);
 				break;
 
 			case ATAG_REVISION:
-				DebugPrintf("REVISION: %x\n", atags->u.revision.rev);
+				DebugPrintf("  REVISION: %x\n", atags->u.revision.rev);
 				break;	
 
 			case ATAG_NONE:
-				DebugPrintf("DONE\n");
+				DebugPrintf("  DONE\n");
 				return;
 		}
 
 		atags = TAG_NEXT(atags);
 	}
+
+	DebugPrintf("\n");
 }

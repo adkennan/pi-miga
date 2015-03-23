@@ -4,7 +4,7 @@
 
 #include "type.h"
 
-void SetScreenMode(uint32 width, uint32 height);
+int SetScreenMode(uint32 width, uint32 height);
 
 void Fill(uint32 x, uint32 y, uint32 w, uint32 h, uint8 r, uint8 g, uint8 b);
 

@@ -8,6 +8,7 @@
 #include "atag.h"
 
 #include "uart.h"
+#include "gpu.h"
 
 extern uint32 _end;
 
@@ -59,13 +60,11 @@ void Ponger() {
 
 int main(struct Atag* atags) {
 
-	uart_init();
-
-	DebugAtags(atags);
+//	uart_init();
 
 	InitKernel((uint8*)&_end);
-
-	EnableInterrupts();
+	
+	DebugAtags(atags);
 	
 	Task_t* t = CreateTask("Pinger", 10, 1024, Pinger);
 	StartTask(t);
@@ -73,6 +72,8 @@ int main(struct Atag* atags) {
 	t = CreateTask("Ponger", 10, 1024, Ponger);
 	StartTask(t);
 
+	EnableInterrupts();
+	
 	while(1) {
 		Sleep(1000000);
 	}

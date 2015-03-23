@@ -1,9 +1,5 @@
 # Makefile - build script */
  
-# build environment
-PREFIX ?= /home/andrew/dev/pi/tc/arm-2008q3
-ARMGNU ?= $(PREFIX)/bin/arm-none-eabi
- 
 # source files
 SOURCES_ASM := $(wildcard src/*.S)
 SOURCES_C   := $(wildcard src/*.c)
@@ -17,7 +13,7 @@ DEPS		+= $(patsubst %.c,%.d,$(SOURCES_C))
 # Build flags
 DEPENDFLAGS := -MD -MP
 INCLUDES    := -I include -I../include -Isrc/uspi/include
-BASEFLAGS   := -O2 -pedantic -pedantic-errors -nostdlib
+BASEFLAGS   := -pedantic -pedantic-errors -nostdlib -O2
 BASEFLAGS   += -nostartfiles -ffreestanding -nodefaultlibs
 BASEFLAGS   += -fno-builtin -fomit-frame-pointer -mcpu=arm1176jzf-s
 WARNFLAGS   := -Wall 
@@ -43,10 +39,10 @@ all: kernel.img
 include $(wildcard src/*.d)
  
 kernel.elf: $(OBJS) libuspi.a link-arm-eabi.ld
-	$(ARMGNU)-gcc $(OBJS) libuspi.a -Tlink-arm-eabi.ld -o $@
+	$(TCPREFIX)-gcc $(OBJS) libuspi.a -Tlink-arm-eabi.ld -o $@
  
 kernel.img: kernel.elf
-	$(ARMGNU)-objcopy kernel.elf -O binary kernel.img
+	$(TCPREFIX)-objcopy kernel.elf -O binary kernel.img
  
 clean:
 	$(RM) -f $(OBJS) $(DEPS) kernel.elf kernel.img
@@ -59,8 +55,9 @@ libuspi.a:
 
 # C.
 %.o: %.c Makefile
-	$(ARMGNU)-gcc $(CFLAGS) -c $< -o $@
+	$(TCPREFIX)-gcc $(CFLAGS) -c $< -o $@
  
 # AS.
 %.o: %.S Makefile
-	$(ARMGNU)-g++ $(ASFLAGS) -c $< -o $@
+	$(TCPREFIX)-gcc $(ASFLAGS) -c $< -o $@
+

@@ -13,23 +13,30 @@ Start:
 	ldr 	pc, 	_fiq_handler
 
 _reset_handler:		.word	reset
-_undefined_handler:	.word 	halt
-_swi_handler:		.word	halt
-_prefetch_handler:	.word	halt
-_data_handler:		.word	halt
-_unused_handler:	.word	halt
+_undefined_handler:	.word 	halt_undef
+_swi_handler:		.word	halt_swi
+_prefetch_handler:	.word	halt_pref
+_data_handler:		.word	halt_data
+_unused_handler:	.word	halt_unusued
 _irq_handler:		.word   _HandleIrq
-_fiq_handler:		.word	halt
+_fiq_handler:		.word	halt_fiq
+
+_has_init:	.word	0
 
 reset:
+	ldr		r0,		=_has_init
+	ldr		r1,		[r0]
+	cmp		r1, 	#0
+	bne		halt_reset
+	mov		r1,		#1
+	str		r1,	[r0]
+
 	// Set up stack for IRQ and SYS modes.
    	orr		r3, 	r4, 	#0x12
    	msr		cpsr_c, 	r3
    	mov		sp, 	#0x4000
-	cpsid   if,     0x1f	
-	ldr		r0,		=exec_location
-	ldr		sp,	 	[r0]
-
+	cpsid   if,     0x1f
+	mov 	sp, 	#0x8000
 	mov		r10,	r2
 
 	// Copy exception handler table to 0x0000
@@ -56,24 +63,52 @@ l1:
 	blo		l1
 
 	mov		r0,		r10
-	ldr		r3,		=main
-	blx		r3
-
-halt:
-	wfe
+	b 		main
 	b		halt
 
+halt_reset:
+	mov 	sp, 	#0x8000
+	bl		HandleReset
+	b		halt
+	
+halt_undef:
+	mov		sp,		#0x8000
+	mov		r0,		r14
+	bl		HandleUndefinedInstruction
+	b		halt
 
-.globl Get32
-Get32:
-	ldr		r0,		[r0]
-	bx		lr
+halt_swi:
+	mov		r0,		#49
+	b		halt
+
+halt_pref:
+	mov		r0,		#50
+	b		halt
+
+halt_data:
+	mov		r0,		#51
+	b		halt
+
+halt_unusued:
+	mov		r0,		#52
+	b		halt
+
+halt_fiq:
+	mov		r0,		#53
+
+halt:
+	bl		DebugPutChar
+halted:
+	wfi
+	b		halted
 
 .globl Put32
 Put32:
-	str		r1,		[r0]
-	bx		lr
+	str r1, [r0]
+	bx lr
 
-exec_location: .int 0x7ff8
-
+.globl Get32
+Get32:
+	ldr r0, [r0]
+	bx lr
 

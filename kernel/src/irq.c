@@ -91,7 +91,7 @@ void DisableInterrupts() {
 
 void RegisterIrqHandler(IrqHandler_t* handler) {
 
-	DebugPrintf("Registering handler for %x\n", handler->num);
+	DebugPrintf("Registering handler for %x...", handler->num);
 
 	InitNode(&handler->n, 0, NULL);	
 	handler->flags = 0;
@@ -100,6 +100,8 @@ void RegisterIrqHandler(IrqHandler_t* handler) {
 	Insert(&(k->irqHandlers), (Node_t*)handler, NULL);
 
 	UpdateBasicIrq();
+
+	DebugPrintf("Done.\n");
 }
 
 void DeregisterIrqHandler(IrqHandler_t* handler) {

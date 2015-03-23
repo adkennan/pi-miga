@@ -10,6 +10,8 @@
 #include "console.h"
 #include "usb.h"
 
+#include "debug.h"
+
 #define EXEC_IFACE_LOC 0x7FFC
 
 #define SCHED_FREQ 100000
@@ -135,7 +137,7 @@ void Schedule() {
 
 			t->schedTime = ticks;
 			t->state = TS_RUNNING;
-	
+
 			_kernel.currentTask = t;
 
 			break;
@@ -149,7 +151,6 @@ void Schedule() {
 void InitKernel(uint8* heapBase) {
 
 	SetScreenMode(800, 600);
-	Fill(0, 0, 800, 600, 0x1f, 0x50, 0xa7);
 
 	_kernel.heapBase = heapBase;
 	InitList(&(_kernel.mem), NT_MEMORY, LF_NONE);
@@ -179,6 +180,6 @@ void InitKernel(uint8* heapBase) {
 
 	AddTimer(&(_kernel.schedTimer));
 
-	InitUsb();
+//	InitUsb();
 }
 

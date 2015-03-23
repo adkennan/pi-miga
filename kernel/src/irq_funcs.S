@@ -6,9 +6,9 @@ _HandleIrq:
 
 	sub		lr, 	lr, 	#4
 
-	cpsid	if,		0x1f
-	
 	srsdb	0x1f!
+
+	cpsid	if,		0x1f
 	
 	push	{r0-r12, lr}
 

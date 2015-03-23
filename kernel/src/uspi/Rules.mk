@@ -25,7 +25,7 @@ endif
 -include $(USPIHOME)/Config.mk
 
 RASPPI	?= 1
-PREFIX	?= arm-none-eabi-
+PREFIX	?= $(TCPREFIX)
 
 CC	= $(PREFIX)gcc
 AS	= $(CC)

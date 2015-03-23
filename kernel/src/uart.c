@@ -10,6 +10,8 @@
 #include "irq.h"
 #include "gpu.h"
 
+int UartInitialized = 0;
+
 enum {
     // The GPIO registers base address.
     GPIO_BASE = 0x20200000,
@@ -100,6 +102,8 @@ void uart_init() {
 
     // Enable UART0, receive & transfer part of UART.
     mmio_write(UART0_CR, (1 << 0) | (1 << 8) | (1 << 9));
+
+	UartInitialized = 1;
 }
 
 void uart_clear_int() {
@@ -113,6 +117,9 @@ void uart_clear_int() {
  * uint8_t Byte: byte to send.
  */
 void uart_putc(uint8_t byte) {
+	if( ! UartInitialized ) {
+		return;
+	}
     // wait for UART to become ready to transmit
     while (1) {
         if (!(mmio_read(UART0_FR) & (1 << 5))) {
@@ -121,7 +128,6 @@ void uart_putc(uint8_t byte) {
     }
     mmio_write(UART0_DR, byte);
 
-	PutChar((uint32)byte);
 }
 
 /*
@@ -131,6 +137,9 @@ void uart_putc(uint8_t byte) {
  * uint8_t: byte received.
  */
 uint8_t uart_getc() {
+	if( ! UartInitialized ) {
+		return 0;
+	}
     // wait for UART to have recieved something
     while (1) {
 	if (!(mmio_read(UART0_FR) & (1 << 4))) {

@@ -1,13 +1,24 @@
 
 #include "debug.h"
 #include "type.h"
-#include "uart.h"
 #include "stdarg.h"
+#include "gpu.h"
+
+#include "uart.h"
+
+void DebugPutChar(char c) {
+
+	PutChar(c);
+
+	uart_putc(c);
+}
 
 void DebugPrintf(const char* fmt, ...) {
 
 	va_list va;
 	va_start(va, fmt);
+
+	DebugPrintArg(fmt, va);
 }
 
 void DebugPrintArg(const char* fmt, va_list va) 
@@ -15,7 +26,7 @@ void DebugPrintArg(const char* fmt, va_list va)
 	char ch;
 	while(  (ch = *(fmt++)) ) {
 		if( ch != '%' ) {
-			uart_putc(ch);
+			DebugPutChar(ch);
 		} else {
 			ch = *(fmt++);
 			if( ! ch ) {
@@ -24,35 +35,35 @@ void DebugPrintArg(const char* fmt, va_list va)
 
 			switch( ch ) {
 				case '%':
-					uart_putc('%');
+					DebugPutChar('%');
 					break;
 					
 				case 's': {
 					const char* s = va_arg(va, const char*);
 					while( *s ) {
-						uart_putc(*(s++));
+						DebugPutChar(*(s++));
 					}
 					break;
 				}
 
 				case 'x':
 				case 'X':
-					uart_putc('0');
-					uart_putc('x');
+					DebugPutChar('0');
+					DebugPutChar('x');
 					uint32 n = va_arg(va, uint32);
 					for( uint32 d = 8; d > 0; d-- ) {
 						uint8 v = (uint8)((n >> ((d - 1) * 4)) & 0xF);
 						if( v < 10 ) {
-							uart_putc('0' + v);
+							DebugPutChar('0' + v);
 						} else {
-							uart_putc('A' + (v - 10));
+							DebugPutChar('A' + (v - 10));
 						}
 					}
 					break;
 
 				default:
-					uart_putc('%');
-					uart_putc(ch);
+					DebugPutChar('%');
+					DebugPutChar(ch);
 					break;
 			}
 		}
