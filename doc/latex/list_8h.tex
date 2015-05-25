@@ -1,0 +1,99 @@
+\hypertarget{list_8h}{\section{include/exec/list.h File Reference}
+\label{list_8h}\index{include/exec/list.\+h@{include/exec/list.\+h}}
+}
+This graph shows which files directly or indirectly include this file\+:
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structNode__t}{Node\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A node in a doubly linked list. \end{DoxyCompactList}\item 
+struct \hyperlink{structList__t}{List\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A doubly linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structNode__t}{Node\+\_\+t} \hyperlink{list_8h_a8b3dcee5f502d75f808228b368f59678}{Node\+\_\+t}
+\item 
+typedef struct \hyperlink{structList__t}{List\+\_\+t} \hyperlink{list_8h_a53c47c307f230ed1a3254862f5eba416}{List\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A doubly linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790}{Node\+Type\+\_\+t} \{ \\*
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790a23323972098f1e8d7d69f2548dccd3dc}{N\+T\+\_\+\+M\+E\+M\+O\+R\+Y}, 
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790a8d4fdbe805357e4e5fae49c58e74d82b}{N\+T\+\_\+\+M\+S\+G\+P\+O\+R\+T}, 
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790ad7848c003cd15bcb0c4e4affe0be5207}{N\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E}, 
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790aced1cd208e2f6bb2daa46f327c21d9a9}{N\+T\+\_\+\+T\+A\+S\+K}, 
+\\*
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790af6b34359b402f6322dff7dd7ac0e57c9}{N\+T\+\_\+\+T\+I\+M\+E\+R}, 
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790ad90f39fc7f34b50b22b9d88b952be07b}{N\+T\+\_\+\+I\+R\+Q}, 
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790a479bbe43fad1534cdf141e2ac7d778af}{N\+T\+\_\+\+L\+I\+B\+R\+A\+R\+Y}, 
+\hyperlink{list_8h_aff499c00c9873bf3fcf1c46bf2652790a91b099937b27a77e685b3708b71239b0}{N\+T\+\_\+\+D\+E\+V\+I\+C\+E}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of list node types. \end{DoxyCompactList}\item 
+enum \hyperlink{list_8h_aa62abdd0ceb352bfba2ef60264a016db}{List\+Flag\+\_\+t} \{ \hyperlink{list_8h_aa62abdd0ceb352bfba2ef60264a016dba9edcfb955d03b443376545f360ac741f}{L\+F\+\_\+\+N\+O\+N\+E} = 0, 
+\hyperlink{list_8h_aa62abdd0ceb352bfba2ef60264a016dba1b34e4d14b29aa2084378cb7c06970be}{L\+F\+\_\+\+S\+O\+R\+T\+E\+D} = 0x1
+ \}
+\begin{DoxyCompactList}\small\item\em Flags controlling list behaviour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{list_8h_a53c47c307f230ed1a3254862f5eba416}{\index{list.\+h@{list.\+h}!List\+\_\+t@{List\+\_\+t}}
+\index{List\+\_\+t@{List\+\_\+t}!list.\+h@{list.\+h}}
+\subsubsection[{List\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List\+\_\+t}  {\bf List\+\_\+t}}}\label{list_8h_a53c47c307f230ed1a3254862f5eba416}
+
+
+A doubly linked list. 
+
+Exec uses this type to manage collections of data.
+
+Depending on the flags a \hyperlink{structList__t}{List\+\_\+t} could be used to implement a number of different algorithms such as lists, queues and stacks. \hypertarget{list_8h_a8b3dcee5f502d75f808228b368f59678}{\index{list.\+h@{list.\+h}!Node\+\_\+t@{Node\+\_\+t}}
+\index{Node\+\_\+t@{Node\+\_\+t}!list.\+h@{list.\+h}}
+\subsubsection[{Node\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Node\+\_\+t} {\bf Node\+\_\+t}}}\label{list_8h_a8b3dcee5f502d75f808228b368f59678}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{list_8h_aa62abdd0ceb352bfba2ef60264a016db}{\index{list.\+h@{list.\+h}!List\+Flag\+\_\+t@{List\+Flag\+\_\+t}}
+\index{List\+Flag\+\_\+t@{List\+Flag\+\_\+t}!list.\+h@{list.\+h}}
+\subsubsection[{List\+Flag\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf List\+Flag\+\_\+t}}}\label{list_8h_aa62abdd0ceb352bfba2ef60264a016db}
+
+
+Flags controlling list behaviour. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{L\+F\+\_\+\+N\+O\+N\+E@{L\+F\+\_\+\+N\+O\+N\+E}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!L\+F\+\_\+\+N\+O\+N\+E@{L\+F\+\_\+\+N\+O\+N\+E}}\item[{\em 
+\hypertarget{list_8h_aa62abdd0ceb352bfba2ef60264a016dba9edcfb955d03b443376545f360ac741f}{L\+F\+\_\+\+N\+O\+N\+E}\label{list_8h_aa62abdd0ceb352bfba2ef60264a016dba9edcfb955d03b443376545f360ac741f}
+}]None. \index{L\+F\+\_\+\+S\+O\+R\+T\+E\+D@{L\+F\+\_\+\+S\+O\+R\+T\+E\+D}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!L\+F\+\_\+\+S\+O\+R\+T\+E\+D@{L\+F\+\_\+\+S\+O\+R\+T\+E\+D}}\item[{\em 
+\hypertarget{list_8h_aa62abdd0ceb352bfba2ef60264a016dba1b34e4d14b29aa2084378cb7c06970be}{L\+F\+\_\+\+S\+O\+R\+T\+E\+D}\label{list_8h_aa62abdd0ceb352bfba2ef60264a016dba1b34e4d14b29aa2084378cb7c06970be}
+}]The list is sorted by node priority. \end{description}
+\end{Desc}
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790}{\index{list.\+h@{list.\+h}!Node\+Type\+\_\+t@{Node\+Type\+\_\+t}}
+\index{Node\+Type\+\_\+t@{Node\+Type\+\_\+t}!list.\+h@{list.\+h}}
+\subsubsection[{Node\+Type\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Node\+Type\+\_\+t}}}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790}
+
+
+Enumeration of list node types. 
+
+These values indicate the type of node contained by a list. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\+T\+\_\+\+M\+E\+M\+O\+R\+Y@{N\+T\+\_\+\+M\+E\+M\+O\+R\+Y}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+M\+E\+M\+O\+R\+Y@{N\+T\+\_\+\+M\+E\+M\+O\+R\+Y}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790a23323972098f1e8d7d69f2548dccd3dc}{N\+T\+\_\+\+M\+E\+M\+O\+R\+Y}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790a23323972098f1e8d7d69f2548dccd3dc}
+}]A node in a memory list. \index{N\+T\+\_\+\+M\+S\+G\+P\+O\+R\+T@{N\+T\+\_\+\+M\+S\+G\+P\+O\+R\+T}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+M\+S\+G\+P\+O\+R\+T@{N\+T\+\_\+\+M\+S\+G\+P\+O\+R\+T}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790a8d4fdbe805357e4e5fae49c58e74d82b}{N\+T\+\_\+\+M\+S\+G\+P\+O\+R\+T}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790a8d4fdbe805357e4e5fae49c58e74d82b}
+}]A message port. \index{N\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E@{N\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E@{N\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790ad7848c003cd15bcb0c4e4affe0be5207}{N\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790ad7848c003cd15bcb0c4e4affe0be5207}
+}]A message. \index{N\+T\+\_\+\+T\+A\+S\+K@{N\+T\+\_\+\+T\+A\+S\+K}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+T\+A\+S\+K@{N\+T\+\_\+\+T\+A\+S\+K}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790aced1cd208e2f6bb2daa46f327c21d9a9}{N\+T\+\_\+\+T\+A\+S\+K}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790aced1cd208e2f6bb2daa46f327c21d9a9}
+}]A task. \index{N\+T\+\_\+\+T\+I\+M\+E\+R@{N\+T\+\_\+\+T\+I\+M\+E\+R}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+T\+I\+M\+E\+R@{N\+T\+\_\+\+T\+I\+M\+E\+R}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790af6b34359b402f6322dff7dd7ac0e57c9}{N\+T\+\_\+\+T\+I\+M\+E\+R}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790af6b34359b402f6322dff7dd7ac0e57c9}
+}]A timer. \index{N\+T\+\_\+\+I\+R\+Q@{N\+T\+\_\+\+I\+R\+Q}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+I\+R\+Q@{N\+T\+\_\+\+I\+R\+Q}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790ad90f39fc7f34b50b22b9d88b952be07b}{N\+T\+\_\+\+I\+R\+Q}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790ad90f39fc7f34b50b22b9d88b952be07b}
+}]An I\+R\+Q handler. \index{N\+T\+\_\+\+L\+I\+B\+R\+A\+R\+Y@{N\+T\+\_\+\+L\+I\+B\+R\+A\+R\+Y}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+L\+I\+B\+R\+A\+R\+Y@{N\+T\+\_\+\+L\+I\+B\+R\+A\+R\+Y}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790a479bbe43fad1534cdf141e2ac7d778af}{N\+T\+\_\+\+L\+I\+B\+R\+A\+R\+Y}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790a479bbe43fad1534cdf141e2ac7d778af}
+}]A library. \index{N\+T\+\_\+\+D\+E\+V\+I\+C\+E@{N\+T\+\_\+\+D\+E\+V\+I\+C\+E}!list.\+h@{list.\+h}}\index{list.\+h@{list.\+h}!N\+T\+\_\+\+D\+E\+V\+I\+C\+E@{N\+T\+\_\+\+D\+E\+V\+I\+C\+E}}\item[{\em 
+\hypertarget{list_8h_aff499c00c9873bf3fcf1c46bf2652790a91b099937b27a77e685b3708b71239b0}{N\+T\+\_\+\+D\+E\+V\+I\+C\+E}\label{list_8h_aff499c00c9873bf3fcf1c46bf2652790a91b099937b27a77e685b3708b71239b0}
+}]A device. \end{description}
+\end{Desc}

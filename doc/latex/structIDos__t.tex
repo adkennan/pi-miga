@@ -1,0 +1,71 @@
+\hypertarget{structIDos__t}{\section{I\+Dos\+\_\+t Struct Reference}
+\label{structIDos__t}\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+}
+
+
+{\ttfamily \#include $<$dos.\+h$>$}
+
+
+
+Collaboration diagram for I\+Dos\+\_\+t\+:
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structInterface__t}{Interface\+\_\+t} \hyperlink{structIDos__t_a9e8c9816d54bd63fef086cb1de661ed8}{base\+Interface}
+\item 
+\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t}($\ast$ \hyperlink{structIDos__t_a3c8c9ae4c3789276390aa10a30f7ea8a}{Open} )(const char $\ast$name, \hyperlink{dos_8h_a3cdef560aca943423a91c6bd3bec421b}{File\+Mode\+\_\+t} mode)
+\item 
+void($\ast$ \hyperlink{structIDos__t_a5a60d031db8a3720299ec5c886d941f3}{Close} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file)
+\item 
+\hyperlink{type_8h_ab7903878916593daecbeb95b98115ab0}{int32}($\ast$ \hyperlink{structIDos__t_afde908870eb926935b5288a04307626c}{Read} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file, \hyperlink{type_8h_a33a5e996e7a90acefb8b1c0bea47e365}{uint8} $\ast$buffer, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} length, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} offset)
+\item 
+\hyperlink{type_8h_ab7903878916593daecbeb95b98115ab0}{int32}($\ast$ \hyperlink{structIDos__t_ac6fcad20ab581ddb3abbca96f681d8fe}{Write} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file, \hyperlink{type_8h_a33a5e996e7a90acefb8b1c0bea47e365}{uint8} $\ast$buffer, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} length)
+\item 
+\hyperlink{type_8h_af6a258d8f3ee5206d682d799316314b1}{bool}($\ast$ \hyperlink{structIDos__t_a7767fc9d37747e3baf93d7f1ee575293}{Can\+Read} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file)
+\item 
+\hyperlink{type_8h_af6a258d8f3ee5206d682d799316314b1}{bool}($\ast$ \hyperlink{structIDos__t_a4ceda128c5e1514f483184c1f0b4a2d4}{Can\+Write} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file)
+\item 
+\hyperlink{type_8h_af6a258d8f3ee5206d682d799316314b1}{bool}($\ast$ \hyperlink{structIDos__t_aabded9d5e6ac211a4157425f11c131eb}{Can\+Seek} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file)
+\item 
+\hyperlink{type_8h_af6a258d8f3ee5206d682d799316314b1}{bool}($\ast$ \hyperlink{structIDos__t_ad8c4027aeae7be89bbd231df7e3c544a}{Can\+Delete} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file)
+\item 
+int($\ast$ \hyperlink{structIDos__t_aab38b44d7df90ff913d28d34ad663073}{Stat} )(\hyperlink{dos_8h_a4b6c6dd7aeae2215bbd688cb79fc1ba9}{File\+\_\+t} file, \hyperlink{structFileStat__t}{File\+Stat\+\_\+t} $\ast$fs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structIDos__t_a9e8c9816d54bd63fef086cb1de661ed8}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!base\+Interface@{base\+Interface}}
+\index{base\+Interface@{base\+Interface}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{base\+Interface}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interface\+\_\+t} I\+Dos\+\_\+t\+::base\+Interface}}\label{structIDos__t_a9e8c9816d54bd63fef086cb1de661ed8}
+\hypertarget{structIDos__t_ad8c4027aeae7be89bbd231df7e3c544a}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Can\+Delete@{Can\+Delete}}
+\index{Can\+Delete@{Can\+Delete}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Can\+Delete}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool}($\ast$ I\+Dos\+\_\+t\+::\+Can\+Delete)({\bf File\+\_\+t} file)}}\label{structIDos__t_ad8c4027aeae7be89bbd231df7e3c544a}
+\hypertarget{structIDos__t_a7767fc9d37747e3baf93d7f1ee575293}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Can\+Read@{Can\+Read}}
+\index{Can\+Read@{Can\+Read}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Can\+Read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool}($\ast$ I\+Dos\+\_\+t\+::\+Can\+Read)({\bf File\+\_\+t} file)}}\label{structIDos__t_a7767fc9d37747e3baf93d7f1ee575293}
+\hypertarget{structIDos__t_aabded9d5e6ac211a4157425f11c131eb}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Can\+Seek@{Can\+Seek}}
+\index{Can\+Seek@{Can\+Seek}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Can\+Seek}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool}($\ast$ I\+Dos\+\_\+t\+::\+Can\+Seek)({\bf File\+\_\+t} file)}}\label{structIDos__t_aabded9d5e6ac211a4157425f11c131eb}
+\hypertarget{structIDos__t_a4ceda128c5e1514f483184c1f0b4a2d4}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Can\+Write@{Can\+Write}}
+\index{Can\+Write@{Can\+Write}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Can\+Write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool}($\ast$ I\+Dos\+\_\+t\+::\+Can\+Write)({\bf File\+\_\+t} file)}}\label{structIDos__t_a4ceda128c5e1514f483184c1f0b4a2d4}
+\hypertarget{structIDos__t_a5a60d031db8a3720299ec5c886d941f3}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Close@{Close}}
+\index{Close@{Close}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Close}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Dos\+\_\+t\+::\+Close)({\bf File\+\_\+t} file)}}\label{structIDos__t_a5a60d031db8a3720299ec5c886d941f3}
+\hypertarget{structIDos__t_a3c8c9ae4c3789276390aa10a30f7ea8a}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Open@{Open}}
+\index{Open@{Open}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\+\_\+t}($\ast$ I\+Dos\+\_\+t\+::\+Open)(const char $\ast$name, {\bf File\+Mode\+\_\+t} mode)}}\label{structIDos__t_a3c8c9ae4c3789276390aa10a30f7ea8a}
+\hypertarget{structIDos__t_afde908870eb926935b5288a04307626c}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Read@{Read}}
+\index{Read@{Read}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int32}($\ast$ I\+Dos\+\_\+t\+::\+Read)({\bf File\+\_\+t} file, {\bf uint8} $\ast$buffer, {\bf uint32} length, {\bf uint32} offset)}}\label{structIDos__t_afde908870eb926935b5288a04307626c}
+\hypertarget{structIDos__t_aab38b44d7df90ff913d28d34ad663073}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Stat@{Stat}}
+\index{Stat@{Stat}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Stat}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ I\+Dos\+\_\+t\+::\+Stat)({\bf File\+\_\+t} file, {\bf File\+Stat\+\_\+t} $\ast$fs)}}\label{structIDos__t_aab38b44d7df90ff913d28d34ad663073}
+\hypertarget{structIDos__t_ac6fcad20ab581ddb3abbca96f681d8fe}{\index{I\+Dos\+\_\+t@{I\+Dos\+\_\+t}!Write@{Write}}
+\index{Write@{Write}!I\+Dos\+\_\+t@{I\+Dos\+\_\+t}}
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int32}($\ast$ I\+Dos\+\_\+t\+::\+Write)({\bf File\+\_\+t} file, {\bf uint8} $\ast$buffer, {\bf uint32} length)}}\label{structIDos__t_ac6fcad20ab581ddb3abbca96f681d8fe}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{dos_8h}{dos.\+h}\end{DoxyCompactItemize}

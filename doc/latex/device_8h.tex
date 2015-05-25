@@ -1,0 +1,65 @@
+\hypertarget{device_8h}{\section{include/exec/device.h File Reference}
+\label{device_8h}\index{include/exec/device.\+h@{include/exec/device.\+h}}
+}
+This graph shows which files directly or indirectly include this file\+:
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structDevice__t}{Device\+\_\+t}
+\item 
+struct \hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t}
+\item 
+struct \hyperlink{structIOStdReq__t}{I\+O\+Std\+Req\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{device_8h_abace68de957a967888265a60eaab4ff3}{I\+O\+Command\+\_\+t} \{ \\*
+\hyperlink{dos_8h_abace68de957a967888265a60eaab4ff3af0dbb98d6e74436e08413e33db3da4ea}{C\+M\+D\+\_\+\+O\+P\+E\+N}, 
+\hyperlink{dos_8h_abace68de957a967888265a60eaab4ff3a583146958061f3fe0bd07c4394097724}{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}, 
+\hyperlink{dos_8h_abace68de957a967888265a60eaab4ff3a43d7f3a35093d4198124c87b43afdefb}{C\+M\+D\+\_\+\+R\+E\+A\+D}, 
+\hyperlink{dos_8h_abace68de957a967888265a60eaab4ff3a612986a7ae236cab656844222f00ba82}{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}, 
+\\*
+\hyperlink{dos_8h_abace68de957a967888265a60eaab4ff3a1746835f231e9c50210989ead7376584}{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}, 
+\hyperlink{device_8h_abace68de957a967888265a60eaab4ff3af0dbb98d6e74436e08413e33db3da4ea}{C\+M\+D\+\_\+\+O\+P\+E\+N}, 
+\hyperlink{device_8h_abace68de957a967888265a60eaab4ff3a583146958061f3fe0bd07c4394097724}{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}, 
+\hyperlink{device_8h_abace68de957a967888265a60eaab4ff3a43d7f3a35093d4198124c87b43afdefb}{C\+M\+D\+\_\+\+R\+E\+A\+D}, 
+\\*
+\hyperlink{device_8h_abace68de957a967888265a60eaab4ff3a612986a7ae236cab656844222f00ba82}{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}, 
+\hyperlink{device_8h_abace68de957a967888265a60eaab4ff3aeb15f4a192d50fb7f72e8fb96a1ec6b1}{C\+M\+D\+\_\+\+A\+B\+O\+R\+T}, 
+\hyperlink{device_8h_abace68de957a967888265a60eaab4ff3a1746835f231e9c50210989ead7376584}{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3}{\index{device.\+h@{device.\+h}!I\+O\+Command\+\_\+t@{I\+O\+Command\+\_\+t}}
+\index{I\+O\+Command\+\_\+t@{I\+O\+Command\+\_\+t}!device.\+h@{device.\+h}}
+\subsubsection[{I\+O\+Command\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf I\+O\+Command\+\_\+t}}}\label{device_8h_abace68de957a967888265a60eaab4ff3}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\+M\+D\+\_\+\+O\+P\+E\+N@{C\+M\+D\+\_\+\+O\+P\+E\+N}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+O\+P\+E\+N@{C\+M\+D\+\_\+\+O\+P\+E\+N}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3af0dbb98d6e74436e08413e33db3da4ea}{C\+M\+D\+\_\+\+O\+P\+E\+N}\label{device_8h_abace68de957a967888265a60eaab4ff3af0dbb98d6e74436e08413e33db3da4ea}
+}]\index{C\+M\+D\+\_\+\+C\+L\+O\+S\+E@{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+C\+L\+O\+S\+E@{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a583146958061f3fe0bd07c4394097724}{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}\label{device_8h_abace68de957a967888265a60eaab4ff3a583146958061f3fe0bd07c4394097724}
+}]\index{C\+M\+D\+\_\+\+R\+E\+A\+D@{C\+M\+D\+\_\+\+R\+E\+A\+D}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+R\+E\+A\+D@{C\+M\+D\+\_\+\+R\+E\+A\+D}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a43d7f3a35093d4198124c87b43afdefb}{C\+M\+D\+\_\+\+R\+E\+A\+D}\label{device_8h_abace68de957a967888265a60eaab4ff3a43d7f3a35093d4198124c87b43afdefb}
+}]\index{C\+M\+D\+\_\+\+W\+R\+I\+T\+E@{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+W\+R\+I\+T\+E@{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a612986a7ae236cab656844222f00ba82}{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}\label{device_8h_abace68de957a967888265a60eaab4ff3a612986a7ae236cab656844222f00ba82}
+}]\index{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M@{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M@{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a1746835f231e9c50210989ead7376584}{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}\label{device_8h_abace68de957a967888265a60eaab4ff3a1746835f231e9c50210989ead7376584}
+}]\index{C\+M\+D\+\_\+\+O\+P\+E\+N@{C\+M\+D\+\_\+\+O\+P\+E\+N}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+O\+P\+E\+N@{C\+M\+D\+\_\+\+O\+P\+E\+N}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3af0dbb98d6e74436e08413e33db3da4ea}{C\+M\+D\+\_\+\+O\+P\+E\+N}\label{device_8h_abace68de957a967888265a60eaab4ff3af0dbb98d6e74436e08413e33db3da4ea}
+}]\index{C\+M\+D\+\_\+\+C\+L\+O\+S\+E@{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+C\+L\+O\+S\+E@{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a583146958061f3fe0bd07c4394097724}{C\+M\+D\+\_\+\+C\+L\+O\+S\+E}\label{device_8h_abace68de957a967888265a60eaab4ff3a583146958061f3fe0bd07c4394097724}
+}]\index{C\+M\+D\+\_\+\+R\+E\+A\+D@{C\+M\+D\+\_\+\+R\+E\+A\+D}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+R\+E\+A\+D@{C\+M\+D\+\_\+\+R\+E\+A\+D}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a43d7f3a35093d4198124c87b43afdefb}{C\+M\+D\+\_\+\+R\+E\+A\+D}\label{device_8h_abace68de957a967888265a60eaab4ff3a43d7f3a35093d4198124c87b43afdefb}
+}]\index{C\+M\+D\+\_\+\+W\+R\+I\+T\+E@{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+W\+R\+I\+T\+E@{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a612986a7ae236cab656844222f00ba82}{C\+M\+D\+\_\+\+W\+R\+I\+T\+E}\label{device_8h_abace68de957a967888265a60eaab4ff3a612986a7ae236cab656844222f00ba82}
+}]\index{C\+M\+D\+\_\+\+A\+B\+O\+R\+T@{C\+M\+D\+\_\+\+A\+B\+O\+R\+T}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+A\+B\+O\+R\+T@{C\+M\+D\+\_\+\+A\+B\+O\+R\+T}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3aeb15f4a192d50fb7f72e8fb96a1ec6b1}{C\+M\+D\+\_\+\+A\+B\+O\+R\+T}\label{device_8h_abace68de957a967888265a60eaab4ff3aeb15f4a192d50fb7f72e8fb96a1ec6b1}
+}]\index{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M@{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}!device.\+h@{device.\+h}}\index{device.\+h@{device.\+h}!C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M@{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}}\item[{\em 
+\hypertarget{device_8h_abace68de957a967888265a60eaab4ff3a1746835f231e9c50210989ead7376584}{C\+M\+D\+\_\+\+C\+U\+S\+T\+O\+M}\label{device_8h_abace68de957a967888265a60eaab4ff3a1746835f231e9c50210989ead7376584}
+}]\end{description}
+\end{Desc}

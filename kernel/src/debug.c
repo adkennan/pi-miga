@@ -9,8 +9,6 @@
 void DebugPutChar(char c) {
 
 	PutChar(c);
-
-	uart_putc(c);
 }
 
 void DebugPrintf(const char* fmt, ...) {
@@ -46,6 +44,8 @@ void DebugPrintArg(const char* fmt, va_list va)
 					break;
 				}
 
+				case 'u':
+				case 'U':
 				case 'x':
 				case 'X':
 					DebugPutChar('0');

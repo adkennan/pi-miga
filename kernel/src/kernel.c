@@ -8,7 +8,7 @@
 #include "msgport.h"
 #include "gpu.h"
 #include "console.h"
-#include "usb.h"
+//#include "usb.h"
 
 #include "debug.h"
 
@@ -99,6 +99,7 @@ void Idler() {
 void StoreStack(StackPtr_t sp) {
 	Task_t* currTask = _kernel.currentTask;
 	if( currTask != NULL ) {
+//		DebugPrintf("Store Stack: %x %s\n", sp, currTask->n.name);
 		currTask->stackPtr = sp;
 	}
 }
@@ -108,11 +109,24 @@ StackPtr_t RestoreStack(void) {
 	StackPtr_t sp = NULL;
 	if( currTask != NULL ) {
 		sp = currTask->stackPtr;
+//		DebugPrintf("Restore Stack: %x %s\n", sp, currTask->n.name);
 	}
 	return sp;
 }
 
+void EnableSchedule(void) {
+	_kernel.kernelState = 0;
+}
+
+void DisableSchedule(void) {
+	_kernel.kernelState = 1;
+}
+
 void Schedule() {
+
+	if( _kernel.kernelState == 1 ) {
+		return;
+	}
 
 	DisableInterrupts();
 

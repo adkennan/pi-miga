@@ -4,6 +4,8 @@
 
 #include "type.h"
 
+void SetPowerState(uint32 device, bool state);
+
 int SetScreenMode(uint32 width, uint32 height);
 
 void Fill(uint32 x, uint32 y, uint32 w, uint32 h, uint8 r, uint8 g, uint8 b);

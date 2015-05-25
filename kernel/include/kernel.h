@@ -16,6 +16,7 @@ typedef struct {
 	Timer_t schedTimer;
 	Task_t* currentTask;
 	uint32 nextTaskId;
+	uint32 kernelState;
 } Kernel_t;
 
 Task_t* CreateTask(const char* name, int8 priority, uint32 stackSize, TaskStart_t start);
@@ -29,5 +30,9 @@ void InitKernel();
 Kernel_t* GetKernel();
 
 void InitExecLibrary(void);
+
+void EnableSchedule(void);
+
+void DisableSchedule(void);
 
 #endif // __KERNEL_H__

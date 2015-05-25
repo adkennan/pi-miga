@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['schedtime',['schedTime',['../structTask__t.html#a29d285141baf9b8079c10e7e8f79b832',1,'Task_t']]],
+  ['sendio',['SendIO',['../structIExec__t.html#aa702c2f17347a64369b3d308cfa52491',1,'IExec_t']]],
+  ['sendmessage',['SendMessage',['../structIExec__t.html#a6f64a8bc0fbc09f77650bd8281040d1d',1,'IExec_t']]],
+  ['setsignalmask',['SetSignalMask',['../structIExec__t.html#aa87b8d32f626af3ceb38b1f5049592a1',1,'IExec_t']]],
+  ['setuserdata',['SetUserData',['../structIExec__t.html#a1de6bff504df7bec720d443453a4daab',1,'IExec_t']]],
+  ['sigalloc',['sigAlloc',['../structTask__t.html#af3012e69b353953ed973d2c4b3681708',1,'Task_t']]],
+  ['signal',['Signal',['../structIExec__t.html#aa70ec2222796fd3d5315fe390b7d682f',1,'IExec_t::Signal()'],['../structMessagePort__t.html#a6edbc6af8afbde167057928a7b45c793',1,'MessagePort_t::signal()']]],
+  ['sigreceived',['sigReceived',['../structTask__t.html#a9976e3b7d8f1563a223028e78f1b0acb',1,'Task_t']]],
+  ['sigwait',['sigWait',['../structTask__t.html#a809491a52f9a7b99ca0cf12cf8838189',1,'Task_t']]],
+  ['size',['size',['../structFileStat__t.html#af6cadf85ce23a6bc64017ecaf0a32cd5',1,'FileStat_t']]],
+  ['slicetime',['sliceTime',['../structTask__t.html#a751511f316ef6c38f23452c6aa618176',1,'Task_t']]],
+  ['stackptr',['stackPtr',['../structTask__t.html#ad71ac9566e50151c4976761ed2867baf',1,'Task_t']]],
+  ['start',['start',['../structTask__t.html#a69d6f6fc71ab8a7dfbc7e56567806d37',1,'Task_t']]],
+  ['starttask',['StartTask',['../structIExec__t.html#a9dbaa5cb36504fd913d3906781cd524d',1,'IExec_t']]],
+  ['stat',['Stat',['../structIDos__t.html#aab38b44d7df90ff913d28d34ad663073',1,'IDos_t']]],
+  ['state',['state',['../structTask__t.html#af387ad54a097d50b2883d3d9352abeac',1,'Task_t']]]
+];

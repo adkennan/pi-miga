@@ -9,7 +9,7 @@ _HandleIrq:
 	srsdb	0x1f!
 
 	cpsid	if,		0x1f
-	
+	mrs		r12, spsr	
 	push	{r0-r12, lr}
 
 	and		r4, 	sp,		#4
@@ -20,16 +20,25 @@ _HandleIrq:
 	mov		r0, sp
 	bl		StoreStack
 
+	//mov		r0, #65
+	//bl		uart_putc
+
 	bl		_DataMemoryBarrier
 	
 	bl		IdentifyIrq
 	
-	cpsie	i
+	//mov		r0, #66
+	//bl		uart_putc
+	
+	//cpsie	i
 	
 	bl		HandleIrq
 
-	cpsid	i
+	//cpsid	i
 
+	//mov		r0, #67
+	//bl		uart_putc
+	
 	bl		_DataMemoryBarrier
 	
 	bl		RestoreStack
@@ -40,6 +49,7 @@ _HandleIrq:
 	add	sp,		sp,		r4
 
 	pop		{r0-r12, lr}
+	msr		spsr, r12
 	rfeia	sp!
 
 .globl _EnableIrq

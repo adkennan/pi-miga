@@ -8,7 +8,7 @@
 
 #define MAGIC 0xDEADBEEF
 
-#define ALIGN(s,n) (n + ((uint64)n % s == 0 ? 0 : (s - (uint64)n % s)))
+#define ALIGN(s,n) ((uint64)((uint32)n + ((uint32)n % s == 0 ? 0 : (s - (uint32)n % s))))
 
 #define SIZE_THRESHOLD 64
 #define SMALL_BLOCK_ENTRIES 64

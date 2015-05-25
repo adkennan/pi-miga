@@ -14,6 +14,8 @@ extern uint32 _end;
 
 void Pinger() {
 
+	DebugPrintf("Starting Pinger\n");
+
 	MessagePort_t* port = IExec->CreatePort(NULL);
 	IORequest_t* req = IExec->CreateIORequest(port, sizeof(IOStdReq_t));
 
@@ -36,6 +38,8 @@ void Pinger() {
 }
 
 void Ponger() {
+
+	DebugPrintf("Starting Ponger\n");
 
 	MessagePort_t* port = IExec->CreatePort(NULL);
 	IORequest_t* req = IExec->CreateIORequest(port, sizeof(IOStdReq_t));
@@ -60,12 +64,12 @@ void Ponger() {
 
 int main(struct Atag* atags) {
 
-//	uart_init();
+	uart_init();
 
 	InitKernel((uint8*)&_end);
 	
 	DebugAtags(atags);
-	
+
 	Task_t* t = CreateTask("Pinger", 10, 1024, Pinger);
 	StartTask(t);
 
@@ -73,9 +77,10 @@ int main(struct Atag* atags) {
 	StartTask(t);
 
 	EnableInterrupts();
-	
+
 	while(1) {
 		Sleep(1000000);
+		//_Idle();
 	}
 	return 0;
 }

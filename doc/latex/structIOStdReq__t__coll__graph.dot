@@ -1,0 +1,28 @@
+digraph "IOStdReq_t"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="IOStdReq_t",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" r" ];
+  Node2 [label="IORequest_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structIORequest__t.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m\nmessage" ];
+  Node3 [label="Message_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structMessage__t.html",tooltip="A message to be passed to a message port. "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ];
+  Node4 [label="Node_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structNode__t.html",tooltip="A node in a doubly linked list. "];
+  Node4 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" prev\nnext" ];
+  Node5 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" destPort\nreplyPort" ];
+  Node5 [label="MessagePort_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structMessagePort__t.html",tooltip="Facilitates passing of messages between tasks. "];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" messages" ];
+  Node6 [label="List_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structList__t.html",tooltip="A doubly linked list. "];
+  Node4 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" head\ntail" ];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ];
+  Node7 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" owner" ];
+  Node7 [label="Task_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structTask__t.html"];
+  Node6 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" msgPorts" ];
+  Node4 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ];
+  Node7 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" parent" ];
+  Node8 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" device" ];
+  Node8 [label="Device_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structDevice__t.html"];
+  Node4 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ];
+  Node7 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" task" ];
+}

@@ -1,0 +1,211 @@
+\hypertarget{structIExec__t}{\section{I\+Exec\+\_\+t Struct Reference}
+\label{structIExec__t}\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+}
+
+
+{\ttfamily \#include $<$exec.\+h$>$}
+
+
+
+Collaboration diagram for I\+Exec\+\_\+t\+:
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structInterface__t}{Interface\+\_\+t} \hyperlink{structIExec__t_aa6ceae9352c17e6bdc47ec89426f7cec}{base\+Iface}
+\item 
+void $\ast$($\ast$ \hyperlink{structIExec__t_acd40d2c369a62c5f5a03b852665e87be}{Alloc\+Mem} )(\hyperlink{type_8h_a076233f9cef100dc0e44ff929d67d111}{size\+\_\+t})
+\item 
+void($\ast$ \hyperlink{structIExec__t_aeb4211f91bb1ca9cadde95d97b6b9da9}{Free\+Mem} )(void $\ast$)
+\item 
+\hyperlink{task_8h_a2a2b5b7da9f241ac42373a0ada8ccd0c}{Signal\+Bit\+\_\+t}($\ast$ \hyperlink{structIExec__t_a7fc67200d9bbb9be8c91910c44b9b8a2}{Alloc\+Signal} )(\hyperlink{task_8h_a2a2b5b7da9f241ac42373a0ada8ccd0c}{Signal\+Bit\+\_\+t})
+\item 
+void($\ast$ \hyperlink{structIExec__t_a30b70f83d842d6cb45d37543560e152d}{Dealloc\+Signal} )(\hyperlink{task_8h_a2a2b5b7da9f241ac42373a0ada8ccd0c}{Signal\+Bit\+\_\+t})
+\item 
+void($\ast$ \hyperlink{structIExec__t_aa70ec2222796fd3d5315fe390b7d682f}{Signal} )(\hyperlink{structTask__t}{Task\+\_\+t} $\ast$, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32})
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_a3918f57891a49b6ea1e5a11aa5e3aaff}{Get\+Signals} )(void)
+\item 
+void($\ast$ \hyperlink{structIExec__t_aa87b8d32f626af3ceb38b1f5049592a1}{Set\+Signal\+Mask} )(\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32})
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_a235681278f5db353eef6777d2abd9f54}{Get\+Signal\+Mask} )(void)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a04da5444df0680708bff66ed1dbea947}{Wait} )(void)
+\item 
+\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a06713fa4b58876173f3274f26a8ca943}{Create\+Port} )(const char $\ast$)
+\item 
+\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a9d511dd8847f1ceec03dc1f0cb6c4b71}{Find\+Port} )(const char $\ast$)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a345b67e7a05a9e498716b6ea41586b61}{Remove\+Port} )(\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$)
+\item 
+\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a6ed4cf5e735ccb663691c9a61018288c}{Alloc\+Message} )(\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32})
+\item 
+void $\ast$($\ast$ \hyperlink{structIExec__t_ad6581396da512a6631bfb6723df8c7db}{Get\+User\+Data} )(\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a1de6bff504df7bec720d443453a4daab}{Set\+User\+Data} )(\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$, void $\ast$, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32})
+\item 
+void($\ast$ \hyperlink{structIExec__t_a6335ee31b358918963bddf93bb5ce256}{Free\+Message} )(\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$)
+\item 
+\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_aea77ea019cf4cffc6fb92f97c2d2eab9}{Wait\+Message} )(\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$)
+\item 
+\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a1a5170656236c15f6fe0302a6de9eb51}{Get\+Message} )(\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a6f64a8bc0fbc09f77650bd8281040d1d}{Send\+Message} )(\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$, \hyperlink{structMessage__t}{Message\+\_\+t} $\ast$)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a2caebccfdf0bf902e5dc29a11907366f}{Reply\+Message} )(\hyperlink{structMessage__t}{Message\+\_\+t} $\ast$)
+\item 
+\hyperlink{structLibrary__t}{Library\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a7e8debe7cab7060a0e06ae1e71b9ffb1}{Create\+Library} )(const char $\ast$, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}, \hyperlink{structInterface__t}{Interface\+\_\+t} $\ast$)
+\item 
+void($\ast$ \hyperlink{structIExec__t_abf7df7580fee75647be527cda9b1d7ad}{Add\+Library} )(\hyperlink{structLibrary__t}{Library\+\_\+t} $\ast$)
+\item 
+\hyperlink{structLibrary__t}{Library\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a5aaad46798a981d39ea50184bedb88d2}{Open\+Library} )(const char $\ast$, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32})
+\item 
+void($\ast$ \hyperlink{structIExec__t_a917810d97701d7666b6bcefd5fade2d7}{Close\+Library} )(\hyperlink{structLibrary__t}{Library\+\_\+t} $\ast$)
+\item 
+\hyperlink{structTask__t}{Task\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a2c21fff11647c6d05903827528522101}{Create\+Task} )(const char $\ast$, \hyperlink{type_8h_aa79c2d3de4fcd200458c406f40b2ae64}{int8}, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}, \hyperlink{task_8h_aeaa40d24cbae67d9cd352d7006fd9bf6}{Task\+Start\+\_\+t} start)
+\item 
+\hyperlink{structTask__t}{Task\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a6003849f8348bceaed6435d63ac4f47f}{Find\+Task} )(const char $\ast$)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a9dbaa5cb36504fd913d3906781cd524d}{Start\+Task} )(\hyperlink{structTask__t}{Task\+\_\+t} $\ast$)
+\item 
+\hyperlink{structDevice__t}{Device\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a39938177ecec3bf1ad125e2e4d30bf6a}{Create\+Device} )(const char $\ast$name, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} stack\+Size, \hyperlink{task_8h_aeaa40d24cbae67d9cd352d7006fd9bf6}{Task\+Start\+\_\+t} start)
+\item 
+\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$($\ast$ \hyperlink{structIExec__t_a655a8fdc54cf3fbcbe83d04b1b34eeab}{Create\+I\+O\+Request} )(\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$port, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} size)
+\item 
+void($\ast$ \hyperlink{structIExec__t_a694b5568caaca24b387d990d1e9bddb5}{Delete\+I\+O\+Request} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_a8a22f0677d3cb7add6a91fd9f535a68a}{Open\+Device} )(const char $\ast$name, \hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} unit, \hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_a4af8d0a31d2f53e3b4b6e95a984d70ab}{Close\+Device} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_adfd1dc0bd8f0bd8d419573e6c6ad4907}{Do\+I\+O} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+void($\ast$ \hyperlink{structIExec__t_aa702c2f17347a64369b3d308cfa52491}{Send\+I\+O} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+\hyperlink{type_8h_af6a258d8f3ee5206d682d799316314b1}{bool}($\ast$ \hyperlink{structIExec__t_a35a562316fd274c0c6980d1dcba532cc}{Check\+I\+O} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_a802bead383402b49d32965b5713e079f}{Wait\+I\+O} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32}($\ast$ \hyperlink{structIExec__t_a6002eecac16603535f0868151903fd12}{Abort\+I\+O} )(\hyperlink{structIORequest__t}{I\+O\+Request\+\_\+t} $\ast$request)
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structIExec__t_a6002eecac16603535f0868151903fd12}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Abort\+I\+O@{Abort\+I\+O}}
+\index{Abort\+I\+O@{Abort\+I\+O}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Abort\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Abort\+I\+O)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_a6002eecac16603535f0868151903fd12}
+\hypertarget{structIExec__t_abf7df7580fee75647be527cda9b1d7ad}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Add\+Library@{Add\+Library}}
+\index{Add\+Library@{Add\+Library}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Add\+Library}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Add\+Library)({\bf Library\+\_\+t} $\ast$)}}\label{structIExec__t_abf7df7580fee75647be527cda9b1d7ad}
+\hypertarget{structIExec__t_acd40d2c369a62c5f5a03b852665e87be}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Alloc\+Mem@{Alloc\+Mem}}
+\index{Alloc\+Mem@{Alloc\+Mem}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Alloc\+Mem}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Alloc\+Mem)({\bf size\+\_\+t})}}\label{structIExec__t_acd40d2c369a62c5f5a03b852665e87be}
+\hypertarget{structIExec__t_a6ed4cf5e735ccb663691c9a61018288c}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Alloc\+Message@{Alloc\+Message}}
+\index{Alloc\+Message@{Alloc\+Message}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Alloc\+Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Alloc\+Message)({\bf uint32})}}\label{structIExec__t_a6ed4cf5e735ccb663691c9a61018288c}
+\hypertarget{structIExec__t_a7fc67200d9bbb9be8c91910c44b9b8a2}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Alloc\+Signal@{Alloc\+Signal}}
+\index{Alloc\+Signal@{Alloc\+Signal}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Alloc\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Signal\+Bit\+\_\+t}($\ast$ I\+Exec\+\_\+t\+::\+Alloc\+Signal)({\bf Signal\+Bit\+\_\+t})}}\label{structIExec__t_a7fc67200d9bbb9be8c91910c44b9b8a2}
+\hypertarget{structIExec__t_aa6ceae9352c17e6bdc47ec89426f7cec}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!base\+Iface@{base\+Iface}}
+\index{base\+Iface@{base\+Iface}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{base\+Iface}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interface\+\_\+t} I\+Exec\+\_\+t\+::base\+Iface}}\label{structIExec__t_aa6ceae9352c17e6bdc47ec89426f7cec}
+\hypertarget{structIExec__t_a35a562316fd274c0c6980d1dcba532cc}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Check\+I\+O@{Check\+I\+O}}
+\index{Check\+I\+O@{Check\+I\+O}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Check\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool}($\ast$ I\+Exec\+\_\+t\+::\+Check\+I\+O)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_a35a562316fd274c0c6980d1dcba532cc}
+\hypertarget{structIExec__t_a4af8d0a31d2f53e3b4b6e95a984d70ab}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Close\+Device@{Close\+Device}}
+\index{Close\+Device@{Close\+Device}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Close\+Device}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Close\+Device)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_a4af8d0a31d2f53e3b4b6e95a984d70ab}
+\hypertarget{structIExec__t_a917810d97701d7666b6bcefd5fade2d7}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Close\+Library@{Close\+Library}}
+\index{Close\+Library@{Close\+Library}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Close\+Library}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Close\+Library)({\bf Library\+\_\+t} $\ast$)}}\label{structIExec__t_a917810d97701d7666b6bcefd5fade2d7}
+\hypertarget{structIExec__t_a39938177ecec3bf1ad125e2e4d30bf6a}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Create\+Device@{Create\+Device}}
+\index{Create\+Device@{Create\+Device}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Create\+Device}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Device\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Create\+Device)(const char $\ast$name, {\bf uint32} stack\+Size, {\bf Task\+Start\+\_\+t} start)}}\label{structIExec__t_a39938177ecec3bf1ad125e2e4d30bf6a}
+\hypertarget{structIExec__t_a655a8fdc54cf3fbcbe83d04b1b34eeab}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Create\+I\+O\+Request@{Create\+I\+O\+Request}}
+\index{Create\+I\+O\+Request@{Create\+I\+O\+Request}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Create\+I\+O\+Request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+O\+Request\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Create\+I\+O\+Request)({\bf Message\+Port\+\_\+t} $\ast$port, {\bf uint32} size)}}\label{structIExec__t_a655a8fdc54cf3fbcbe83d04b1b34eeab}
+\hypertarget{structIExec__t_a7e8debe7cab7060a0e06ae1e71b9ffb1}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Create\+Library@{Create\+Library}}
+\index{Create\+Library@{Create\+Library}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Create\+Library}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Library\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Create\+Library)(const char $\ast$, {\bf uint32}, {\bf Interface\+\_\+t} $\ast$)}}\label{structIExec__t_a7e8debe7cab7060a0e06ae1e71b9ffb1}
+\hypertarget{structIExec__t_a06713fa4b58876173f3274f26a8ca943}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Create\+Port@{Create\+Port}}
+\index{Create\+Port@{Create\+Port}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Create\+Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+Port\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Create\+Port)(const char $\ast$)}}\label{structIExec__t_a06713fa4b58876173f3274f26a8ca943}
+\hypertarget{structIExec__t_a2c21fff11647c6d05903827528522101}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Create\+Task@{Create\+Task}}
+\index{Create\+Task@{Create\+Task}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Create\+Task}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Task\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Create\+Task)(const char $\ast$, {\bf int8}, {\bf uint32}, {\bf Task\+Start\+\_\+t} start)}}\label{structIExec__t_a2c21fff11647c6d05903827528522101}
+\hypertarget{structIExec__t_a30b70f83d842d6cb45d37543560e152d}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Dealloc\+Signal@{Dealloc\+Signal}}
+\index{Dealloc\+Signal@{Dealloc\+Signal}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Dealloc\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Dealloc\+Signal)({\bf Signal\+Bit\+\_\+t})}}\label{structIExec__t_a30b70f83d842d6cb45d37543560e152d}
+\hypertarget{structIExec__t_a694b5568caaca24b387d990d1e9bddb5}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Delete\+I\+O\+Request@{Delete\+I\+O\+Request}}
+\index{Delete\+I\+O\+Request@{Delete\+I\+O\+Request}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Delete\+I\+O\+Request}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Delete\+I\+O\+Request)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_a694b5568caaca24b387d990d1e9bddb5}
+\hypertarget{structIExec__t_adfd1dc0bd8f0bd8d419573e6c6ad4907}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Do\+I\+O@{Do\+I\+O}}
+\index{Do\+I\+O@{Do\+I\+O}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Do\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Do\+I\+O)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_adfd1dc0bd8f0bd8d419573e6c6ad4907}
+\hypertarget{structIExec__t_a9d511dd8847f1ceec03dc1f0cb6c4b71}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Find\+Port@{Find\+Port}}
+\index{Find\+Port@{Find\+Port}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Find\+Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+Port\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Find\+Port)(const char $\ast$)}}\label{structIExec__t_a9d511dd8847f1ceec03dc1f0cb6c4b71}
+\hypertarget{structIExec__t_a6003849f8348bceaed6435d63ac4f47f}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Find\+Task@{Find\+Task}}
+\index{Find\+Task@{Find\+Task}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Find\+Task}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Task\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Find\+Task)(const char $\ast$)}}\label{structIExec__t_a6003849f8348bceaed6435d63ac4f47f}
+\hypertarget{structIExec__t_aeb4211f91bb1ca9cadde95d97b6b9da9}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Free\+Mem@{Free\+Mem}}
+\index{Free\+Mem@{Free\+Mem}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Free\+Mem}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Free\+Mem)(void $\ast$)}}\label{structIExec__t_aeb4211f91bb1ca9cadde95d97b6b9da9}
+\hypertarget{structIExec__t_a6335ee31b358918963bddf93bb5ce256}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Free\+Message@{Free\+Message}}
+\index{Free\+Message@{Free\+Message}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Free\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Free\+Message)({\bf Message\+\_\+t} $\ast$)}}\label{structIExec__t_a6335ee31b358918963bddf93bb5ce256}
+\hypertarget{structIExec__t_a1a5170656236c15f6fe0302a6de9eb51}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Get\+Message@{Get\+Message}}
+\index{Get\+Message@{Get\+Message}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Get\+Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Get\+Message)({\bf Message\+Port\+\_\+t} $\ast$)}}\label{structIExec__t_a1a5170656236c15f6fe0302a6de9eb51}
+\hypertarget{structIExec__t_a235681278f5db353eef6777d2abd9f54}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Get\+Signal\+Mask@{Get\+Signal\+Mask}}
+\index{Get\+Signal\+Mask@{Get\+Signal\+Mask}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Get\+Signal\+Mask}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Get\+Signal\+Mask)(void)}}\label{structIExec__t_a235681278f5db353eef6777d2abd9f54}
+\hypertarget{structIExec__t_a3918f57891a49b6ea1e5a11aa5e3aaff}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Get\+Signals@{Get\+Signals}}
+\index{Get\+Signals@{Get\+Signals}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Get\+Signals}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Get\+Signals)(void)}}\label{structIExec__t_a3918f57891a49b6ea1e5a11aa5e3aaff}
+\hypertarget{structIExec__t_ad6581396da512a6631bfb6723df8c7db}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Get\+User\+Data@{Get\+User\+Data}}
+\index{Get\+User\+Data@{Get\+User\+Data}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Get\+User\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Get\+User\+Data)({\bf Message\+\_\+t} $\ast$)}}\label{structIExec__t_ad6581396da512a6631bfb6723df8c7db}
+\hypertarget{structIExec__t_a8a22f0677d3cb7add6a91fd9f535a68a}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Open\+Device@{Open\+Device}}
+\index{Open\+Device@{Open\+Device}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Open\+Device}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Open\+Device)(const char $\ast$name, {\bf uint32} unit, {\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_a8a22f0677d3cb7add6a91fd9f535a68a}
+\hypertarget{structIExec__t_a5aaad46798a981d39ea50184bedb88d2}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Open\+Library@{Open\+Library}}
+\index{Open\+Library@{Open\+Library}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Open\+Library}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Library\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Open\+Library)(const char $\ast$, {\bf uint32})}}\label{structIExec__t_a5aaad46798a981d39ea50184bedb88d2}
+\hypertarget{structIExec__t_a345b67e7a05a9e498716b6ea41586b61}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Remove\+Port@{Remove\+Port}}
+\index{Remove\+Port@{Remove\+Port}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Remove\+Port}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Remove\+Port)({\bf Message\+Port\+\_\+t} $\ast$)}}\label{structIExec__t_a345b67e7a05a9e498716b6ea41586b61}
+\hypertarget{structIExec__t_a2caebccfdf0bf902e5dc29a11907366f}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Reply\+Message@{Reply\+Message}}
+\index{Reply\+Message@{Reply\+Message}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Reply\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Reply\+Message)({\bf Message\+\_\+t} $\ast$)}}\label{structIExec__t_a2caebccfdf0bf902e5dc29a11907366f}
+\hypertarget{structIExec__t_aa702c2f17347a64369b3d308cfa52491}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Send\+I\+O@{Send\+I\+O}}
+\index{Send\+I\+O@{Send\+I\+O}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Send\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Send\+I\+O)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_aa702c2f17347a64369b3d308cfa52491}
+\hypertarget{structIExec__t_a6f64a8bc0fbc09f77650bd8281040d1d}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Send\+Message@{Send\+Message}}
+\index{Send\+Message@{Send\+Message}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Send\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Send\+Message)({\bf Message\+Port\+\_\+t} $\ast$, {\bf Message\+\_\+t} $\ast$)}}\label{structIExec__t_a6f64a8bc0fbc09f77650bd8281040d1d}
+\hypertarget{structIExec__t_aa87b8d32f626af3ceb38b1f5049592a1}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Set\+Signal\+Mask@{Set\+Signal\+Mask}}
+\index{Set\+Signal\+Mask@{Set\+Signal\+Mask}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Set\+Signal\+Mask}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Set\+Signal\+Mask)({\bf uint32})}}\label{structIExec__t_aa87b8d32f626af3ceb38b1f5049592a1}
+\hypertarget{structIExec__t_a1de6bff504df7bec720d443453a4daab}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Set\+User\+Data@{Set\+User\+Data}}
+\index{Set\+User\+Data@{Set\+User\+Data}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Set\+User\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Set\+User\+Data)({\bf Message\+\_\+t} $\ast$, void $\ast$, {\bf uint32})}}\label{structIExec__t_a1de6bff504df7bec720d443453a4daab}
+\hypertarget{structIExec__t_aa70ec2222796fd3d5315fe390b7d682f}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Signal@{Signal}}
+\index{Signal@{Signal}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Signal}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Signal)({\bf Task\+\_\+t} $\ast$, {\bf uint32})}}\label{structIExec__t_aa70ec2222796fd3d5315fe390b7d682f}
+\hypertarget{structIExec__t_a9dbaa5cb36504fd913d3906781cd524d}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Start\+Task@{Start\+Task}}
+\index{Start\+Task@{Start\+Task}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Start\+Task}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Start\+Task)({\bf Task\+\_\+t} $\ast$)}}\label{structIExec__t_a9dbaa5cb36504fd913d3906781cd524d}
+\hypertarget{structIExec__t_a04da5444df0680708bff66ed1dbea947}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Wait@{Wait}}
+\index{Wait@{Wait}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Wait}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ I\+Exec\+\_\+t\+::\+Wait)(void)}}\label{structIExec__t_a04da5444df0680708bff66ed1dbea947}
+\hypertarget{structIExec__t_a802bead383402b49d32965b5713e079f}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Wait\+I\+O@{Wait\+I\+O}}
+\index{Wait\+I\+O@{Wait\+I\+O}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Wait\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32}($\ast$ I\+Exec\+\_\+t\+::\+Wait\+I\+O)({\bf I\+O\+Request\+\_\+t} $\ast$request)}}\label{structIExec__t_a802bead383402b49d32965b5713e079f}
+\hypertarget{structIExec__t_aea77ea019cf4cffc6fb92f97c2d2eab9}{\index{I\+Exec\+\_\+t@{I\+Exec\+\_\+t}!Wait\+Message@{Wait\+Message}}
+\index{Wait\+Message@{Wait\+Message}!I\+Exec\+\_\+t@{I\+Exec\+\_\+t}}
+\subsubsection[{Wait\+Message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+\_\+t}$\ast$($\ast$ I\+Exec\+\_\+t\+::\+Wait\+Message)({\bf Message\+Port\+\_\+t} $\ast$)}}\label{structIExec__t_aea77ea019cf4cffc6fb92f97c2d2eab9}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{exec_8h}{exec.\+h}\end{DoxyCompactItemize}

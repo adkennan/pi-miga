@@ -1,0 +1,63 @@
+\hypertarget{structMessage__t}{\section{Message\+\_\+t Struct Reference}
+\label{structMessage__t}\index{Message\+\_\+t@{Message\+\_\+t}}
+}
+
+
+A message to be passed to a message port.  
+
+
+
+
+{\ttfamily \#include $<$msgport.\+h$>$}
+
+
+
+Collaboration diagram for Message\+\_\+t\+:
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structNode__t}{Node\+\_\+t} \hyperlink{structMessage__t_ad39202c787bca02f4dc0dce9f60caead}{n}
+\item 
+\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$ \hyperlink{structMessage__t_a6cac91bef9fe2098eb00caf47c1afd14}{dest\+Port}
+\begin{DoxyCompactList}\small\item\em The port the message will be sent to. \end{DoxyCompactList}\item 
+\hyperlink{structMessagePort__t}{Message\+Port\+\_\+t} $\ast$ \hyperlink{structMessage__t_af901b37fc1bb20d21385423fde383058}{reply\+Port}
+\begin{DoxyCompactList}\small\item\em The port to send a reply to. \end{DoxyCompactList}\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} \hyperlink{structMessage__t_a9c626cb2daa6618f78bc294c9e999600}{length}
+\begin{DoxyCompactList}\small\item\em The number of bytes of data following the message structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A message to be passed to a message port. 
+
+Messages are objects that are passed between tasks. The message includes a length parameter indicating the number of bytes of data following the message structure. No copying of data takes place. 
+
+\subsection{Field Documentation}
+\hypertarget{structMessage__t_a6cac91bef9fe2098eb00caf47c1afd14}{\index{Message\+\_\+t@{Message\+\_\+t}!dest\+Port@{dest\+Port}}
+\index{dest\+Port@{dest\+Port}!Message\+\_\+t@{Message\+\_\+t}}
+\subsubsection[{dest\+Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+Port\+\_\+t}$\ast$ Message\+\_\+t\+::dest\+Port}}\label{structMessage__t_a6cac91bef9fe2098eb00caf47c1afd14}
+
+
+The port the message will be sent to. 
+
+\hypertarget{structMessage__t_a9c626cb2daa6618f78bc294c9e999600}{\index{Message\+\_\+t@{Message\+\_\+t}!length@{length}}
+\index{length@{length}!Message\+\_\+t@{Message\+\_\+t}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} Message\+\_\+t\+::length}}\label{structMessage__t_a9c626cb2daa6618f78bc294c9e999600}
+
+
+The number of bytes of data following the message structure. 
+
+\hypertarget{structMessage__t_ad39202c787bca02f4dc0dce9f60caead}{\index{Message\+\_\+t@{Message\+\_\+t}!n@{n}}
+\index{n@{n}!Message\+\_\+t@{Message\+\_\+t}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node\+\_\+t} Message\+\_\+t\+::n}}\label{structMessage__t_ad39202c787bca02f4dc0dce9f60caead}
+\hypertarget{structMessage__t_af901b37fc1bb20d21385423fde383058}{\index{Message\+\_\+t@{Message\+\_\+t}!reply\+Port@{reply\+Port}}
+\index{reply\+Port@{reply\+Port}!Message\+\_\+t@{Message\+\_\+t}}
+\subsubsection[{reply\+Port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+Port\+\_\+t}$\ast$ Message\+\_\+t\+::reply\+Port}}\label{structMessage__t_af901b37fc1bb20d21385423fde383058}
+
+
+The port to send a reply to. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/exec/\hyperlink{msgport_8h}{msgport.\+h}\end{DoxyCompactItemize}

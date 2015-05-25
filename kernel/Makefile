@@ -1,5 +1,9 @@
 # Makefile - build script */
- 
+
+#TOOL_PATH 	:= $(HOME)/dev/pi/tc/current/bin/
+TCPREFIX  	?= arm-none-eabi
+
+
 # source files
 SOURCES_ASM := $(wildcard src/*.S)
 SOURCES_C   := $(wildcard src/*.c)
@@ -13,9 +17,10 @@ DEPS		+= $(patsubst %.c,%.d,$(SOURCES_C))
 # Build flags
 DEPENDFLAGS := -MD -MP
 INCLUDES    := -I include -I../include -Isrc/uspi/include
-BASEFLAGS   := -pedantic -pedantic-errors -nostdlib -O2
+BASEFLAGS   := -fpic -nostdlib -O2 -std=c99
 BASEFLAGS   += -nostartfiles -ffreestanding -nodefaultlibs
 BASEFLAGS   += -fno-builtin -fomit-frame-pointer -mcpu=arm1176jzf-s
+BASEFLAGS	+= -D__have_long64 -D__int_fast64_t_defined 
 WARNFLAGS   := -Wall 
 #-Wextra -Wshadow -Wcast-align -Wwrite-strings
 #WARNFLAGS   += -Wredundant-decls -Winline
@@ -31,18 +36,17 @@ WARNFLAGS   := -Wall
 #WARNFLAGS   += -Werror
 ASFLAGS     := $(INCLUDES) $(DEPENDFLAGS) -D__ASSEMBLY__
 CFLAGS      := $(INCLUDES) $(DEPENDFLAGS) $(BASEFLAGS) $(WARNFLAGS)
-CFLAGS      += -std=c99 -D__have_long64 -D__int_fast64_t_defined
- 
+LDFLAGS		:=  -Tlink-arm-eabi.ld 
 # build rules
 all: kernel.img
  
 include $(wildcard src/*.d)
  
-kernel.elf: $(OBJS) libuspi.a link-arm-eabi.ld
-	$(TCPREFIX)-gcc $(OBJS) libuspi.a -Tlink-arm-eabi.ld -o $@
+kernel.elf: $(OBJS) link-arm-eabi.ld
+	$(TOOL_PATH)$(TCPREFIX)-gcc $(OBJS) $(CFLAGS) $(LDFLAGS) -o $@
  
 kernel.img: kernel.elf
-	$(TCPREFIX)-objcopy kernel.elf -O binary kernel.img
+	$(TOOL_PATH)$(TCPREFIX)-objcopy kernel.elf -O binary kernel.img
  
 clean:
 	$(RM) -f $(OBJS) $(DEPS) kernel.elf kernel.img
@@ -50,14 +54,11 @@ clean:
 dist-clean: clean
 	$(RM) -f *.d
  
-libuspi.a: 
-	cd src/uspi/lib ; make ; cp libuspi.a ../../..
-
 # C.
 %.o: %.c Makefile
-	$(TCPREFIX)-gcc $(CFLAGS) -c $< -o $@
+	$(TOOL_PATH)$(TCPREFIX)-gcc $(CFLAGS) -c $< -o $@
  
 # AS.
 %.o: %.S Makefile
-	$(TCPREFIX)-gcc $(ASFLAGS) -c $< -o $@
+	$(TOOL_PATH)$(TCPREFIX)-gcc $(ASFLAGS) -c $< -o $@
 

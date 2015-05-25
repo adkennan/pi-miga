@@ -1,0 +1,38 @@
+digraph "IExec_t"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="IExec_t",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" AllocMessage\nWaitMessage\nGetMessage" ,fontname="Helvetica"];
+  Node2 [label="Message_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structMessage__t.html",tooltip="A message to be passed to a message port. "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ,fontname="Helvetica"];
+  Node3 [label="Node_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structNode__t.html",tooltip="A node in a doubly linked list. "];
+  Node3 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" prev\nnext" ,fontname="Helvetica"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" destPort\nreplyPort" ,fontname="Helvetica"];
+  Node4 [label="MessagePort_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structMessagePort__t.html",tooltip="Facilitates passing of messages between tasks. "];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" messages" ,fontname="Helvetica"];
+  Node5 [label="List_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structList__t.html",tooltip="A doubly linked list. "];
+  Node3 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" head\ntail" ,fontname="Helvetica"];
+  Node3 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ,fontname="Helvetica"];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" owner" ,fontname="Helvetica"];
+  Node6 [label="Task_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structTask__t.html"];
+  Node5 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" msgPorts" ,fontname="Helvetica"];
+  Node3 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ,fontname="Helvetica"];
+  Node6 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" parent" ,fontname="Helvetica"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" CreateLibrary\nOpenLibrary" ,fontname="Helvetica"];
+  Node7 [label="Library_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structLibrary__t.html"];
+  Node3 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ,fontname="Helvetica"];
+  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" interface" ,fontname="Helvetica"];
+  Node8 [label="Interface_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structInterface__t.html"];
+  Node8 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" baseIface" ,fontname="Helvetica"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" CreateTask\nFindTask" ,fontname="Helvetica"];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" CreateIORequest" ,fontname="Helvetica"];
+  Node9 [label="IORequest_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structIORequest__t.html"];
+  Node2 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m\nmessage" ,fontname="Helvetica"];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" device" ,fontname="Helvetica"];
+  Node10 [label="Device_t",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structDevice__t.html"];
+  Node3 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" n" ,fontname="Helvetica"];
+  Node6 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" task" ,fontname="Helvetica"];
+  Node10 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" CreateDevice" ,fontname="Helvetica"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" FindPort\nCreatePort" ,fontname="Helvetica"];
+}

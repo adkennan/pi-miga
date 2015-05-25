@@ -4,8 +4,8 @@
 #include "timer.h"
 #include "kernel.h"
 #include "irq.h"
-
-#define IRQ_TIMER 1
+#include "debug.h"
+#include "irq.h"
 
 #define TMR_CTRL_16BIT 0 << 1
 #define TMR_CTRL_23BIT 1 << 1
@@ -24,6 +24,8 @@ extern void _Idle(void);
 
 typedef struct {
 	volatile uint32 CounterStatus;
+	volatile uint32 CounterLo;
+	volatile uint32 CounterHi;
 	volatile uint64 Counter;
 	volatile uint32 Compare0;
 	volatile uint32 Compare1;
@@ -47,6 +49,8 @@ static volatile CounterReg_t* CounterReg = (CounterReg_t*)0x20003000;
 static volatile TimerReg_t* TimerReg = (TimerReg_t*)0x2000B400;
 static IrqHandler_t TimerIrqHandler;
 
+#define GET_COUNTER ((uint64)CounterReg->CounterLo + ((uint64)CounterReg->CounterHi << 32))
+
 bool TimerIdentifier(void* data) {
 
 	if( TimerReg->MaskedIrq == 1 ) {
@@ -60,8 +64,7 @@ bool TimerIdentifier(void* data) {
 
 void TimerHandler(void* data) {
 
-	uint64 counter = CounterReg->Counter;
-
+	uint64 counter = GET_COUNTER;
 	Timer_t* c = (Timer_t*)(GetKernel()->timers).head;
 	//
 	Timer_t* n = NULL;
@@ -98,14 +101,14 @@ void InitTimer() {
 
 	TimerIrqHandler.handler = &TimerHandler;
 	TimerIrqHandler.identifier = &TimerIdentifier;
-	TimerIrqHandler.num = IRQ_TIMER;
+	TimerIrqHandler.num = IRQ_BASIC_TIMER;
 	RegisterIrqHandler(&TimerIrqHandler);
 }
 
 void AddTimer(Timer_t* timer) {
 	InitNode(&timer->n, 0, NULL);
 
-	timer->lastCall = CounterReg->Counter;
+	timer->lastCall = GET_COUNTER;
 
 	Insert(&(GetKernel()->timers), (Node_t*)timer, NULL);
 }
@@ -116,13 +119,20 @@ void RemoveTimer(Timer_t* timer) {
 }
 
 uint64 GetTicks() {
-	return CounterReg->Counter;
+	return GET_COUNTER;
 }
 
 void Sleep(uint64 microseconds) {
-	uint64 target = GetTicks() + microseconds;
-	while( GetTicks() < target ) {
-		_Idle();
+
+	uint64 current = GetTicks();
+	uint64 prev = current;
+	uint64 target = current + microseconds;
+	while( current < target ) {
+		current = GetTicks();
+		if( current > prev + 1000 ) {
+			prev = current;
+		}
+		//_Idle();
 	}
 }
 

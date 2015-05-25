@@ -1,0 +1,77 @@
+\hypertarget{structIORequest__t}{\section{I\+O\+Request\+\_\+t Struct Reference}
+\label{structIORequest__t}\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+}
+
+
+{\ttfamily \#include $<$dos.\+h$>$}
+
+
+
+Collaboration diagram for I\+O\+Request\+\_\+t\+:
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structMessage__t}{Message\+\_\+t} \hyperlink{structIORequest__t_aaf8d00358fa7bdb30c42cc92da2b39ac}{message}
+\item 
+\hyperlink{dos_8h_abace68de957a967888265a60eaab4ff3}{I\+O\+Command\+\_\+t} \hyperlink{structIORequest__t_a09975dead789e9ca82d73b267922bdeb}{cmd}
+\item 
+\hyperlink{type_8h_a33a5e996e7a90acefb8b1c0bea47e365}{uint8} $\ast$ \hyperlink{structIORequest__t_a89d47dc8e65f31e68d25e18aef0bfdb9}{buffer}
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} \hyperlink{structIORequest__t_a8abb560751ab89ed9832e33ccaf29bbe}{length}
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} \hyperlink{structIORequest__t_a6943e0aae82e0b581992229b2ec51db4}{offset}
+\item 
+\hyperlink{structMessage__t}{Message\+\_\+t} \hyperlink{structIORequest__t_a6415480c05aae21f3e52f6a0d69564e0}{m}
+\item 
+\hyperlink{structDevice__t}{Device\+\_\+t} $\ast$ \hyperlink{structIORequest__t_ab0f35ee6afa72fc763c1c25bc0425a20}{device}
+\item 
+void $\ast$ \hyperlink{structIORequest__t_a847ff0c9d9b5ddbb2ebe7215283f54b3}{unit}
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} \hyperlink{structIORequest__t_a2432f9f617a1372505d0902878c6d387}{command}
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} \hyperlink{structIORequest__t_a920984e3c855b294c6c7fd67b6a229da}{flags}
+\item 
+\hyperlink{type_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{uint32} \hyperlink{structIORequest__t_a5ee59ce665e6426dcc2c0163eafb3d26}{error}
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structIORequest__t_a89d47dc8e65f31e68d25e18aef0bfdb9}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!buffer@{buffer}}
+\index{buffer@{buffer}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint8}$\ast$ I\+O\+Request\+\_\+t\+::buffer}}\label{structIORequest__t_a89d47dc8e65f31e68d25e18aef0bfdb9}
+\hypertarget{structIORequest__t_a09975dead789e9ca82d73b267922bdeb}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!cmd@{cmd}}
+\index{cmd@{cmd}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{cmd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+O\+Command\+\_\+t} I\+O\+Request\+\_\+t\+::cmd}}\label{structIORequest__t_a09975dead789e9ca82d73b267922bdeb}
+\hypertarget{structIORequest__t_a2432f9f617a1372505d0902878c6d387}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!command@{command}}
+\index{command@{command}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} I\+O\+Request\+\_\+t\+::command}}\label{structIORequest__t_a2432f9f617a1372505d0902878c6d387}
+\hypertarget{structIORequest__t_ab0f35ee6afa72fc763c1c25bc0425a20}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!device@{device}}
+\index{device@{device}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{device}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Device\+\_\+t}$\ast$ I\+O\+Request\+\_\+t\+::device}}\label{structIORequest__t_ab0f35ee6afa72fc763c1c25bc0425a20}
+\hypertarget{structIORequest__t_a5ee59ce665e6426dcc2c0163eafb3d26}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!error@{error}}
+\index{error@{error}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} I\+O\+Request\+\_\+t\+::error}}\label{structIORequest__t_a5ee59ce665e6426dcc2c0163eafb3d26}
+\hypertarget{structIORequest__t_a920984e3c855b294c6c7fd67b6a229da}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!flags@{flags}}
+\index{flags@{flags}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} I\+O\+Request\+\_\+t\+::flags}}\label{structIORequest__t_a920984e3c855b294c6c7fd67b6a229da}
+\hypertarget{structIORequest__t_a8abb560751ab89ed9832e33ccaf29bbe}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!length@{length}}
+\index{length@{length}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} I\+O\+Request\+\_\+t\+::length}}\label{structIORequest__t_a8abb560751ab89ed9832e33ccaf29bbe}
+\hypertarget{structIORequest__t_a6415480c05aae21f3e52f6a0d69564e0}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!m@{m}}
+\index{m@{m}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{m}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+\_\+t} I\+O\+Request\+\_\+t\+::m}}\label{structIORequest__t_a6415480c05aae21f3e52f6a0d69564e0}
+\hypertarget{structIORequest__t_aaf8d00358fa7bdb30c42cc92da2b39ac}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!message@{message}}
+\index{message@{message}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+\_\+t} I\+O\+Request\+\_\+t\+::message}}\label{structIORequest__t_aaf8d00358fa7bdb30c42cc92da2b39ac}
+\hypertarget{structIORequest__t_a6943e0aae82e0b581992229b2ec51db4}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!offset@{offset}}
+\index{offset@{offset}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32} I\+O\+Request\+\_\+t\+::offset}}\label{structIORequest__t_a6943e0aae82e0b581992229b2ec51db4}
+\hypertarget{structIORequest__t_a847ff0c9d9b5ddbb2ebe7215283f54b3}{\index{I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}!unit@{unit}}
+\index{unit@{unit}!I\+O\+Request\+\_\+t@{I\+O\+Request\+\_\+t}}
+\subsubsection[{unit}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ I\+O\+Request\+\_\+t\+::unit}}\label{structIORequest__t_a847ff0c9d9b5ddbb2ebe7215283f54b3}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{dos_8h}{dos.\+h}\item 
+include/exec/\hyperlink{device_8h}{device.\+h}\end{DoxyCompactItemize}

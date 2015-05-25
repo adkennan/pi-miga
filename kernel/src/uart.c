@@ -63,7 +63,7 @@ static void delay(int32_t count) {
 /*
  * Initialize UART0.
  */
-void uart_init() {
+void uart_init() { /*
     // Disable UART0.
     mmio_write(UART0_CR, 0x00000000);
     // Setup the GPIO pin 14 && 15.
@@ -102,7 +102,7 @@ void uart_init() {
 
     // Enable UART0, receive & transfer part of UART.
     mmio_write(UART0_CR, (1 << 0) | (1 << 8) | (1 << 9));
-
+*/
 	UartInitialized = 1;
 }
 

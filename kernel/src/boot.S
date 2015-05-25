@@ -98,8 +98,10 @@ halt_fiq:
 
 halt:
 	bl		DebugPutChar
+//	srsdb	0x1f!
+//	cpsid	if,	0x1f
 halted:
-	wfi
+//	wfi
 	b		halted
 
 .globl Put32

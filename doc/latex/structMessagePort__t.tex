@@ -1,0 +1,65 @@
+\hypertarget{structMessagePort__t}{\section{Message\+Port\+\_\+t Struct Reference}
+\label{structMessagePort__t}\index{Message\+Port\+\_\+t@{Message\+Port\+\_\+t}}
+}
+
+
+Facilitates passing of messages between tasks.  
+
+
+
+
+{\ttfamily \#include $<$msgport.\+h$>$}
+
+
+
+Collaboration diagram for Message\+Port\+\_\+t\+:
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structNode__t}{Node\+\_\+t} \hyperlink{structMessagePort__t_aef6611866e17a017727b3d3d317beeb7}{n}
+\item 
+\hyperlink{task_8h_a2a2b5b7da9f241ac42373a0ada8ccd0c}{Signal\+Bit\+\_\+t} \hyperlink{structMessagePort__t_a6edbc6af8afbde167057928a7b45c793}{signal}
+\begin{DoxyCompactList}\small\item\em The signal associated with this message port. \end{DoxyCompactList}\item 
+\hyperlink{structTask__t}{Task\+\_\+t} $\ast$ \hyperlink{structMessagePort__t_a38ef8fc428ef33c108d1734731d1b40e}{owner}
+\begin{DoxyCompactList}\small\item\em The task that owns this message port. \end{DoxyCompactList}\item 
+\hyperlink{structList__t}{List\+\_\+t} \hyperlink{structMessagePort__t_ac205ddab2edee9954f8b0ad22bd29d09}{messages}
+\begin{DoxyCompactList}\small\item\em This list of messages queued for processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Facilitates passing of messages between tasks. 
+
+A Message Port is the core of the I\+P\+C mechanism used for communication between tasks.
+
+When a message is received by a port the task will be signalled. If the task is sleeping it will be made runnable and can process the queued messages. 
+
+\subsection{Field Documentation}
+\hypertarget{structMessagePort__t_ac205ddab2edee9954f8b0ad22bd29d09}{\index{Message\+Port\+\_\+t@{Message\+Port\+\_\+t}!messages@{messages}}
+\index{messages@{messages}!Message\+Port\+\_\+t@{Message\+Port\+\_\+t}}
+\subsubsection[{messages}]{\setlength{\rightskip}{0pt plus 5cm}{\bf List\+\_\+t} Message\+Port\+\_\+t\+::messages}}\label{structMessagePort__t_ac205ddab2edee9954f8b0ad22bd29d09}
+
+
+This list of messages queued for processing. 
+
+\hypertarget{structMessagePort__t_aef6611866e17a017727b3d3d317beeb7}{\index{Message\+Port\+\_\+t@{Message\+Port\+\_\+t}!n@{n}}
+\index{n@{n}!Message\+Port\+\_\+t@{Message\+Port\+\_\+t}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node\+\_\+t} Message\+Port\+\_\+t\+::n}}\label{structMessagePort__t_aef6611866e17a017727b3d3d317beeb7}
+\hypertarget{structMessagePort__t_a38ef8fc428ef33c108d1734731d1b40e}{\index{Message\+Port\+\_\+t@{Message\+Port\+\_\+t}!owner@{owner}}
+\index{owner@{owner}!Message\+Port\+\_\+t@{Message\+Port\+\_\+t}}
+\subsubsection[{owner}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Task\+\_\+t}$\ast$ Message\+Port\+\_\+t\+::owner}}\label{structMessagePort__t_a38ef8fc428ef33c108d1734731d1b40e}
+
+
+The task that owns this message port. 
+
+\hypertarget{structMessagePort__t_a6edbc6af8afbde167057928a7b45c793}{\index{Message\+Port\+\_\+t@{Message\+Port\+\_\+t}!signal@{signal}}
+\index{signal@{signal}!Message\+Port\+\_\+t@{Message\+Port\+\_\+t}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Signal\+Bit\+\_\+t} Message\+Port\+\_\+t\+::signal}}\label{structMessagePort__t_a6edbc6af8afbde167057928a7b45c793}
+
+
+The signal associated with this message port. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/exec/\hyperlink{msgport_8h}{msgport.\+h}\end{DoxyCompactItemize}

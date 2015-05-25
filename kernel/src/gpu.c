@@ -3,12 +3,14 @@
 #include "font.xbm"
 #include "gpu.h"
 #include "debug.h"
+#include "uart.h"
 
 #define CHAR_WIDTH 8
 #define CHAR_HEIGHT 15
 
 extern void Put32(uint32, uint32);
 extern uint32 Get32(uint32);
+extern void _DataMemoryBarrier(void);
 
 typedef struct {
 	uint32 x;
@@ -34,6 +36,7 @@ Screen_t Screen;
 
 void MailboxWrite(uint32 box, uint32 data) {
 
+	_DataMemoryBarrier();
 
 	while(TRUE) {
 		if((Get32(_MailboxStatus) & 0x80000000) == 0) {
@@ -42,10 +45,12 @@ void MailboxWrite(uint32 box, uint32 data) {
 	}
 
 	Put32(_MailboxWrite, data + box);
+	_DataMemoryBarrier();
 }
 
 uint32 MailboxRead(uint32 box) {
 
+	_DataMemoryBarrier();
 	uint32 value;
 	box &= 0xF;
 	while(TRUE) {
@@ -61,6 +66,24 @@ uint32 MailboxRead(uint32 box) {
 	}
 	
 	return value - box;
+}
+
+void SetPowerState(uint32 deviceId, bool state) {
+
+	uint32 mb = (uint32)&mailbuffer | 0x40000000;
+
+	mailbuffer[0] = 8 * 4; // Total size
+	mailbuffer[1] = 0; // Request
+	mailbuffer[2] = 0x28001; // Power
+	mailbuffer[3] = 8; // Buffer size
+	mailbuffer[4] = 8; // Buffer size
+	mailbuffer[5] = deviceId;
+	mailbuffer[6] = state == TRUE ? 3 : 0,
+	mailbuffer[7] = 0; // End tag
+
+	MailboxWrite(8, mb);
+	uint32 result = MailboxRead(8);
+	DebugPrintf("SetPowerState = %x\n", mailbuffer[1]);
 }
 
 int SetScreenMode(uint32 width, uint32 height) {
@@ -232,6 +255,8 @@ void WriteChar(uint32 c, uint32 x, uint32 y, uint8 r, uint8 g, uint8 b) {
 }
 
 void PutChar(uint32 c) {
+
+	uart_putc(c);
 
 	if( Screen.Buffer == NULL ) {
 		return;
