@@ -4,7 +4,9 @@
 
 #include "exec.h"
 
-Device_t* CreateDevice(const char* name, uint32 stackSize, TaskStart_t start);
+Device_t* CreateDevice(const char* name, uint32 size, DeviceInterface_t* iface);
+
+void AddDevice(Device_t* device);
 
 IORequest_t* CreateIORequest(MessagePort_t* port, uint32 size);
 

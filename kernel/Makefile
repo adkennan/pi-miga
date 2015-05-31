@@ -5,8 +5,8 @@ TCPREFIX  	?= arm-none-eabi
 
 
 # source files
-SOURCES_ASM := $(wildcard src/*.S)
-SOURCES_C   := $(wildcard src/*.c)
+SOURCES_ASM := $(wildcard src/*.S) $(wildcard src/*/*.S)
+SOURCES_C   := $(wildcard src/*.c) $(wildcard src/*/*.c)
  
 # object files
 OBJS        := $(patsubst %.S,%.o,$(SOURCES_ASM))

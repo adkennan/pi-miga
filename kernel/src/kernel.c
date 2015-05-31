@@ -7,8 +7,6 @@
 #include "signal.h"
 #include "msgport.h"
 #include "gpu.h"
-#include "console.h"
-//#include "usb.h"
 
 #include "debug.h"
 
@@ -190,10 +188,6 @@ void InitKernel(uint8* heapBase) {
 	Task_t *idleTask = CreateTask("Idle", 127, 1024, Idler);
 	StartTask(idleTask);
 
-	StartConsole();
-
 	AddTimer(&(_kernel.schedTimer));
-
-//	InitUsb();
 }
 

@@ -53,6 +53,7 @@ void InitExecLibrary(void) {
 	iface->StartTask = StartTask;
 
 	iface->CreateDevice = CreateDevice;
+	iface->AddDevice = AddDevice;
 	iface->CreateIORequest = CreateIORequest;
 	iface->DeleteIORequest = DeleteIORequest;
 	iface->OpenDevice = OpenDevice;

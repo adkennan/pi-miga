@@ -73,7 +73,8 @@ typedef struct {
 	 * Devices
 	 */
 
-	Device_t* (*CreateDevice)(const char* name, uint32 stackSize, TaskStart_t start);
+	Device_t* (*CreateDevice)(const char* name, uint32 size, DeviceInterface_t* iface);
+	void (*AddDevice)(Device_t* device);
 	IORequest_t* (*CreateIORequest)(MessagePort_t* port, uint32 size);
 	void (*DeleteIORequest)(IORequest_t* request);
 	uint32 (*OpenDevice)(const char *name, uint32 unit, IORequest_t* request);

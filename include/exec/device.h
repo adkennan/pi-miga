@@ -2,27 +2,6 @@
 #ifndef __EXEC_DEVICE_H__
 #define __EXEC_DEVICE_H__
 
-/** \brief Describes a device
- *
- * A device represents an abstraction of a resource available to the system.
- *
- */
-typedef struct {
-	Node_t n;
-	Task_t* task;	//!< The task providing the device interface.
-} Device_t;
-
-/** \brief Describes a device unit
- *
- *
- */
-typedef struct {
-	MessagePort_t port;   //!< Queue for unprocessed messages.
-	uint32 unitNum;	  //!< Unit number.
-	uint32 openCount; //!< Count of opens of this unit.
-} Unit_t;
-
-
 /** \brief Standard device commands.
  *
  * These are the standard commands devices are expected to respond to.
@@ -37,6 +16,48 @@ typedef enum {
 	CMD_ABORT,	 //!< Attempt to abort an IO operation.
 	CMD_CUSTOM	 //!< A custom IO command.
 } IOCommand_t;
+
+/** \brief Device IO flags
+ *
+ * These flags are used to control the behaviour of IO requests.
+ *
+ */
+typedef enum {
+	IOF_QUICK	= 1 << 1,	 //!< Attempt quick IO.
+	IOF_SHARED	= 1 << 2,
+	IOF_ABORT	= 1 << 3
+} IOFlags_t;
+
+typedef enum {
+	DEV_STREAM,
+	DEV_BLOCK,
+	DEV_OTHER
+} IOType_t;
+
+
+
+/** \brief Describes a device
+ *
+ * A device represents an abstraction of a resource available to the system.
+ *
+ */
+typedef struct DeviceInterface_t DeviceInterface_t;
+
+typedef struct {
+	Node_t n;
+	IOType_t type;
+	DeviceInterface_t* iface;
+} Device_t;
+
+/** \brief Describes a device unit
+ *
+ *
+ */
+typedef struct {
+	MessagePort_t port;   //!< Queue for unprocessed messages.
+	uint32 unitNum;	  //!< Unit number.
+	uint32 openCount; //!< Count of opens of this unit.
+} Unit_t;
 
 /** \brief Base for device IO requests.
  *
@@ -64,6 +85,15 @@ typedef struct {
 	uint32 offset;	//!< An offset within the buffer to read or write from.
 	uint32 actual;	//!< The actual number of bytes read or written.
 } IOStdReq_t;
+
+struct DeviceInterface_t {
+	void (*Init)(Device_t*);
+	void (*Open)(uint32 unit, IORequest_t*);
+	void (*Close)(IORequest_t*);
+	void (*Expunge)(Device_t*);
+	void (*BeginIO)(IORequest_t*);
+	void (*AbortIO)(IORequest_t*);
+}; 
 
 #endif // __EXEC_DEVICE_H__
 

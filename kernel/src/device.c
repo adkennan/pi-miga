@@ -8,21 +8,22 @@
 #include "list.h"
 #include "signal.h"
 
-#define DEV_PRIORITY 5
-
-Device_t* CreateDevice(const char* name, uint32 stackSize, TaskStart_t start) {
-
-	Device_t* dev = (Device_t*)AllocMem(sizeof(Device_t));
+Device_t* CreateDevice(const char* name, uint32 size, DeviceInterface_t* iface)
+{
+	Device_t* dev = (Device_t*)AllocMem(size);
 	InitNode((Node_t*)dev, 0, name);
 
-	dev->task = CreateTask(name, DEV_PRIORITY, stackSize, start);
-
-	Kernel_t* k = GetKernel();
-	Insert(&(k->devices), (Node_t*)dev, NULL);
-
-	StartTask(dev->task);
+	dev->iface = (struct DeviceInterface_t*)iface;
 
 	return dev;
+}
+
+void AddDevice(Device_t* device) 
+{
+	device->iface->Init(device);
+
+	Kernel_t* k = GetKernel();
+	Insert(&(k->devices), (Node_t*)device, NULL);
 }
 
 IORequest_t* CreateIORequest(MessagePort_t* port, uint32 size) {
@@ -50,39 +51,42 @@ uint32 OpenDevice(const char *name, uint32 unit, IORequest_t* request) {
 	}
 
 	request->device = dev;
-	request->m.destPort = (MessagePort_t*)dev->task->msgPorts.head;
 
-	request->command = CMD_OPEN;
-	if( DoIO(request) ) {
-		return request->error;
-	}
+	dev->iface->Open(unit, request);
 
-	return 0;
+	return request->error;
 }
 
 uint32 CloseDevice(IORequest_t* request) {
 
-	request->command = CMD_CLOSE;
-	if( DoIO(request) ) {
-		return request->error;
-	}
+	request->device->iface->Close(request);
 
-	return 0;
+	return request->error;
 }
 
 uint32 DoIO(IORequest_t* request) {
 
-	SendIO(request);
+	request->flags |= IOF_QUICK;
 
+	request->device->iface->BeginIO(request);
+	if( (request->flags & IOF_QUICK) == 0 ) {
+		return request->error;
+	}
+		
 	return WaitIO(request);
 }
 
 void SendIO(IORequest_t* request) {
 
-	SendMessage(request->m.destPort, (Message_t*)request);
+	request->flags ^= IOF_QUICK;
+	request->device->iface->BeginIO(request);
 }
 
 bool CheckIO(IORequest_t* request) {
+
+	if( (request->flags & IOF_QUICK) == IOF_QUICK ) {
+		return TRUE;
+	}
 
 	SignalBit_t sigs = GetSignals();
 	if( sigs & request->m.destPort->signal ) {
@@ -93,12 +97,17 @@ bool CheckIO(IORequest_t* request) {
 
 uint32 WaitIO(IORequest_t* request) {
 
-	WaitMessage(request->m.replyPort);
+	if( (request->flags & IOF_QUICK) == 0 ){
+
+		WaitMessage(request->m.replyPort);
+	}
 
 	return request->error;
 }
 
 uint32 AbortIO(IORequest_t* request) {
 
-	return 0;
+	request->device->iface->AbortIO(request);
+
+	return request->error;
 }
