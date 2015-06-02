@@ -10,6 +10,8 @@
 
 #include "debug.h"
 
+#include "device/serialdev.h"
+
 #define EXEC_IFACE_LOC 0x7FFC
 
 #define SCHED_FREQ 100000
@@ -189,5 +191,7 @@ void InitKernel(uint8* heapBase) {
 	StartTask(idleTask);
 
 	AddTimer(&(_kernel.schedTimer));
+
+	CreateSerialDevice();
 }
 
